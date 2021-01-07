@@ -1,0 +1,12 @@
+::ng-deep .mat-tab-header {
+  max-width: 450px;
+}
+
+::ng-deep mat-ink-bar {
+  height: 3px !important;
+}
+
+::ng-deep .mat-tab-label.mat-tab-label-active {
+  color: #000000 !important;
+  opacity: 1;
+}

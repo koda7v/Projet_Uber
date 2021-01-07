@@ -1,0 +1,66 @@
+$content-background: #f0f0f7;
+$active-color: #e79759;
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  justify-content: center;
+}
+
+.mat-drawer-side {
+  border: none;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  justify-content: center;
+  height: 56px;
+  padding: 0;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+.mat-icon {
+  color: #a5a4bf;
+}
+
+.mat-icon.active {
+  color: $active-color;
+}
+
+.mat-drawer-content {
+  background-color: $content-background;
+}
+
+.content {
+  padding: 1em 4em 2em;
+}
+
+.item-selected {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-left: 5px solid $active-color;
+}
+
+.item-selected.active {
+  display: block;
+}
+
+.mat-list-item.active {
+  background-color: $content-background;
+}

@@ -1,0 +1,113 @@
+<app-page-title title="Personnes" [breadcrumb]="breadcrumb"></app-page-title>
+
+<app-active-persons-tabs></app-active-persons-tabs>
+
+<div class="table-toolbar">
+  <button mat-mini-fab class="success" aria-label="Ajouter une personne" matTooltip="Ajouter une personne"
+    matTooltipPosition="above">
+    <mat-icon svgIcon="plus"></mat-icon>
+  </button>
+  <button mat-mini-fab [disabled]="selection.isEmpty()" class="error" aria-label="Supprimer les personnes sélectionnées"
+    matTooltip="Supprimer les personnes sélectionnées" matTooltipPosition="above">
+    <mat-icon svgIcon="delete-outline"></mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <app-search-personne-field></app-search-personne-field>
+</div>
+
+<div class="table-paginator-container">
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Colonne checkbox -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox color="primary" (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Colonne civilité -->
+      <ng-container matColumnDef="civilite">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Civilité</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.civilite}}</td>
+      </ng-container>
+
+      <!-- Colonne nom -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Nom</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.nom}}</td>
+      </ng-container>
+
+      <!-- Colonne prénom -->
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Prénom</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+      </ng-container>
+
+      <!-- Colonne date de naissance -->
+      <ng-container matColumnDef="dateDeNaissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Date de naissance</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.dateDeNaissance | date:'shortDate'}}</td>
+      </ng-container>
+
+      <!-- Colonne agence -->
+      <ng-container matColumnDef="agence">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Agence</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.agence}}</td>
+      </ng-container>
+
+      <!-- Colonne entreprise -->
+      <ng-container matColumnDef="entreprise">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <h3>Entreprise</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.entreprise}}</td>
+      </ng-container>
+
+      <!-- Colonne actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+          <h3>Actions</h3>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button aria-label="Actions" [routerLink]="['/personnes', element.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button aria-label=" Actions">
+            <mat-icon>create</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Actions">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+      <!-- Colonne aucune données trouvées. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Aucune données disponibles...</td>
+      </tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+</div>
