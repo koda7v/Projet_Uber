@@ -4,31 +4,38 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-/**
- * @author yannl
- *
- */
+import repository.client.ClientConstantsSQL;
+
+@Table(ClientConstantsSQL.TABLE_NAME)
 public class Client
 {
 
   @Id
+  @Column(ClientConstantsSQL.ID_COLUMN_NAME)
   protected Long id;
 
   @NotEmpty
+  @Column(ClientConstantsSQL.NOM_COLUMN_NAME)
   protected String nom;
 
   @NotEmpty
+  @Column(ClientConstantsSQL.PRENOM_COLUMN_NAME)
   protected String prenom;
 
   @NotEmpty
+  @Column(ClientConstantsSQL.ADRESSE_COLUMN_NAME)
   protected String adresse;
 
   @NotEmpty
+  @Column(ClientConstantsSQL.MAIL_COLUMN_NAME)
   protected String email;
 
   @NotEmpty(message = "Votre numero de telephone doit avoir des chiffres")
   @Size(min = 10, max = 12, message = "Votre numero de telephone doit avoir entre 10 et 12 chiffres")
+  @Column(ClientConstantsSQL.NUMERO_TELEPHONE_COLUMN_NAME)
   protected String telephone;
 
   /**

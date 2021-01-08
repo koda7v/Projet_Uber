@@ -21,4 +21,6 @@ public class ClientConstantsSQL
 
   public static final String ADRESSE_COLUMN_NAME = "cli_adresse";
 
+  public static final String MAIL_COLUMN_NAME = "cli_email";
+
 }
