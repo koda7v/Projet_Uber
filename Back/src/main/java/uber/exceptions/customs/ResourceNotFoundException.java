@@ -1,4 +1,4 @@
-package exceptions.customs;
+package uber.exceptions.customs;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

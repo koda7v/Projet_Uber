@@ -1,4 +1,4 @@
-package model;
+package uber.model;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import repository.client.ClientConstantsSQL;
+import uber.repository.client.ClientConstantsSQL;
 
 @Table(ClientConstantsSQL.TABLE_NAME)
 public class Client
@@ -47,26 +47,9 @@ public class Client
    * @param email
    * @param telephone
    */
-  public Client(Long id, String nom, String prenom, String adresse, String email, String telephone)
+  public Client(Long id, String nom, String prenom, String telephone, String email, String adresse)
   {
     this.id = id;
-    this.nom = nom;
-    this.prenom = prenom;
-    this.adresse = adresse;
-    this.email = email;
-    this.telephone = telephone;
-  }
-
-  /**
-   * 
-   * @param nom
-   * @param prenom
-   * @param adresse
-   * @param email
-   * @param telephone
-   */
-  public Client(String nom, String prenom, String adresse, String email, String telephone)
-  {
     this.nom = nom;
     this.prenom = prenom;
     this.adresse = adresse;

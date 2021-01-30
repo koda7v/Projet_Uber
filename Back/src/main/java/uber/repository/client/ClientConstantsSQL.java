@@ -1,4 +1,4 @@
-package repository.client;
+package uber.repository.client;
 
 public class ClientConstantsSQL
 {

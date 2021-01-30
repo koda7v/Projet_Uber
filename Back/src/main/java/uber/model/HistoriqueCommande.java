@@ -1,4 +1,4 @@
-package model;
+package uber.model;
 
 import org.springframework.data.annotation.Id;
 

@@ -1,4 +1,4 @@
-package model;
+package uber.model;
 
 import javax.validation.constraints.NotEmpty;
 

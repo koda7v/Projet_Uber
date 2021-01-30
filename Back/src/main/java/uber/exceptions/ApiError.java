@@ -1,4 +1,4 @@
-package exceptions;
+package uber.exceptions;
 
 import java.time.LocalDateTime;
 import java.util.List;

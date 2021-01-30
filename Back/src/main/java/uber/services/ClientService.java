@@ -1,13 +1,13 @@
-package services;
+package uber.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import exceptions.customs.ResourceNotFoundException;
-import model.Client;
-import repository.client.ClientRepository;
+import uber.exceptions.customs.ResourceNotFoundException;
+import uber.model.Client;
+import uber.repository.client.ClientRepository;
 
 @Service
 public class ClientService
