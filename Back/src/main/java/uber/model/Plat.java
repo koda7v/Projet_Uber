@@ -3,56 +3,77 @@ package uber.model;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-public class Plat {
+import uber.repository.plat.PlatConstantSQL;
 
-	@Id
-	protected Long id;
+@Table(PlatConstantSQL.TABLE_NAME)
+public class Plat
+{
 
-	@NotEmpty
-	protected String nom;
+  @Id
+  @Column(PlatConstantSQL.ID_COLUMN_NAME)
+  protected Long id;
 
-	@NotEmpty
-	protected String description;
-	protected Integer prix;
+  @NotEmpty
+  @Column(PlatConstantSQL.NOM_COLUMN_NAME)
+  protected String nom;
 
-	public Plat(Long id, String nom, String description, Integer prix) {
-		this.id = id;
-		this.nom = nom;
-		this.description = description;
-		this.prix = prix;
-	}
+  @NotEmpty
+  @Column(PlatConstantSQL.DESCRIPTION_COLUMN_NAME)
+  protected String description;
 
-	public Long getId() {
-		return id;
-	}
+  @NotEmpty
+  @Column(PlatConstantSQL.PRIX_COLUMN_NAME)
+  protected Integer prix;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public Plat(Long id, String nom, String description, Integer prix)
+  {
+    this.id = id;
+    this.nom = nom;
+    this.description = description;
+    this.prix = prix;
+  }
 
-	public String getNom() {
-		return nom;
-	}
+  public Long getId()
+  {
+    return id;
+  }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+  public void setId(Long id)
+  {
+    this.id = id;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public String getNom()
+  {
+    return nom;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public void setNom(String nom)
+  {
+    this.nom = nom;
+  }
 
-	public Integer getPrix() {
-		return prix;
-	}
+  public String getDescription()
+  {
+    return description;
+  }
 
-	public void setPrix(Integer prix) {
-		this.prix = prix;
-	}
+  public void setDescription(String description)
+  {
+    this.description = description;
+  }
+
+  public Integer getPrix()
+  {
+    return prix;
+  }
+
+  public void setPrix(Integer prix)
+  {
+    this.prix = prix;
+  }
 
 }

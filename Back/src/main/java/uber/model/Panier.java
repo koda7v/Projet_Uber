@@ -6,65 +6,87 @@ import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 
-public class Panier {
-	@Id
-	protected Long id;
+public class Panier
+{
+  @Id
+  protected Long id;
 
-	protected Long total;
+  protected Long total;
 
-	protected Date date;
+  protected Date date;
 
-	@Id
-	protected Long idClient;
+  @Id
+  protected Long idClient;
 
-	protected Set<Plat> plats;
+  protected Set<Plat> plats;
 
-	public Panier(Long id, Long total, Date date, Long idClient) {
-		this.id = id;
-		this.total = total;
-		this.date = date;
-		this.idClient = idClient;
-		this.plats = new HashSet<>();
-	}
+  public Panier(Long id, Long total, Date date, Long idClient)
+  {
+    this.id = id;
+    this.total = total;
+    this.date = date;
+    this.idClient = idClient;
 
-	public Long getId() {
-		return id;
-	}
+    this.plats = new HashSet<>();
+  }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  /*---------- Plats ---------*/
 
-	public Long getTotal() {
-		return total;
-	}
+  public void addPlat(Plat plat)
+  {
+    this.plats.add(plat);
+  }
 
-	public void setTotal(Long total) {
-		this.total = total;
-	}
+  /*---------- Getters and Setters ---------*/
 
-	public Date getDate() {
-		return date;
-	}
+  public Long getId()
+  {
+    return id;
+  }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+  public void setId(Long id)
+  {
+    this.id = id;
+  }
 
-	public Long getIdClient() {
-		return idClient;
-	}
+  public Long getTotal()
+  {
+    return total;
+  }
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
-	}
+  public void setTotal(Long total)
+  {
+    this.total = total;
+  }
 
-	public Set<Plat> getPlats() {
-		return plats;
-	}
+  public Date getDate()
+  {
+    return date;
+  }
 
-	public void setPlats(Set<Plat> plats) {
-		this.plats = plats;
-	}
+  public void setDate(Date date)
+  {
+    this.date = date;
+  }
+
+  public Long getIdClient()
+  {
+    return idClient;
+  }
+
+  public void setIdClient(Long idClient)
+  {
+    this.idClient = idClient;
+  }
+
+  public Set<Plat> getPlats()
+  {
+    return plats;
+  }
+
+  public void setPlats(Set<Plat> plats)
+  {
+    this.plats = plats;
+  }
 
 }
