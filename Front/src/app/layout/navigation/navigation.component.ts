@@ -10,14 +10,7 @@ export class NavigationComponent {
 
   constructor() {
     this.items = [
-      { title: 'Accueil', route: '/accueil', icon: 'dashboard' },
-      { title: 'Gestion des Personnes', route: '/personnes', icon: 'person' },
-      {
-        title: 'Gestion des Habilitations',
-        route: '/habilitations',
-        icon: 'assignment'
-      },
-      { title: 'Gestion des Formations', route: '/formations', icon: 'school' }
+      { title: 'Gestion des Clients', route: '/clients', icon: 'person' },
     ];
   }
 }

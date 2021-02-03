@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "giraphix": {
+    "UberProjet": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/giraphix",
+            "outputPath": "dist/UberProjet",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "giraphix:build"
+            "browserTarget": "UberProjet:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "giraphix:build:production"
+              "browserTarget": "UberProjet:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "giraphix:build"
+            "browserTarget": "UberProjet:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "giraphix:serve"
+            "devServerTarget": "UberProjet:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "giraphix:serve:production"
+              "devServerTarget": "UberProjet:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "giraphix"
+  "defaultProject": "UberProjet"
 }

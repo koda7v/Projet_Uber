@@ -1,21 +1,21 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$giraphix-primary: mat-palette($mat-indigo);
-$giraphix-accent: mat-palette($mat-orange, A200, A100, A400);
-$giraphix-warn: mat-palette($mat-red);
+$UberProjet-primary: mat-palette($mat-indigo);
+$UberProjet-accent: mat-palette($mat-orange, A200, A100, A400);
+$UberProjet-warn: mat-palette($mat-red);
 
-$giraphix-theme: mat-light-theme(
+$UberProjet-theme: mat-light-theme(
   (
     color: (
-      primary: $giraphix-primary,
-      accent: $giraphix-accent,
-      warn: $giraphix-warn
+      primary: $UberProjet-primary,
+      accent: $UberProjet-accent,
+      warn: $UberProjet-warn
     )
   )
 );
 
-@include angular-material-theme($giraphix-theme);
+@include angular-material-theme($UberProjet-theme);
 
 html,
 body {
