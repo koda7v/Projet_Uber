@@ -12,7 +12,6 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/app-layout.module';
-import { HttpErrorInterceptor } from './http-error-interceptor.interceptor';
 import { paginatorFrench } from './material-intl/paginator-fr';
 
 registerLocaleData(localeFr, 'fr');
@@ -27,7 +26,6 @@ registerLocaleData(localeFr, 'fr');
     AppLayoutModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'fr' },
     { provide: MatPaginatorIntl, useClass: paginatorFrench }
   ],
