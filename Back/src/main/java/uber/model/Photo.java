@@ -16,7 +16,7 @@ public class Photo
   protected Long id;
 
   @NotEmpty
-  @Column(PhotoConstantSQL.PHOTO_COLUMN_NAME, 1000)
+  // @Column(PhotoConstantSQL.PHOTO_COLUMN_NAME, 1000)
   private byte[] photo;
 
   @NotEmpty
