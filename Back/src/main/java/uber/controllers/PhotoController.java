@@ -11,35 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import uber.model.Plat;
-import uber.services.PlatService;
+import uber.model.Photo;
+import uber.services.PhotoService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/plat")
-public class PlatController
+@RequestMapping("/photo")
+public class PhotoController
 {
   @Autowired
-  PlatService platService;
+  PhotoService photoService;
 
   /**
-   * Retourne le client correspondant à l'ID passé en paramètre.
+   * Retourne la photo correspondante à l'ID passé en paramètre.
    * 
    * @param id
-   * 
+   *          ID de la photo recherchée.
+   * @return
    */
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Plat getPlat(@PathVariable Long id)
+  public Photo getPhoto(@PathVariable Long id)
   {
-    return this.platService.findPlat(id);
+    return this.photoService.findPhoto(id);
   }
 
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
-  public List<Plat> getAllPlats()
+  public List<Photo> getAllPhoto()
   {
-    return this.platService.findAllPlat();
+    return this.photoService.findAllPhoto();
   }
 
 }
