@@ -11,6 +11,7 @@ export class NavigationComponent {
   constructor() {
     this.items = [
       { title: 'Gestion des Clients', route: '/clients', icon: 'person' },
+      { title: 'Voir les plats', route: '/plats', icon: 'dining' },
     ];
   }
 }

@@ -20,20 +20,12 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ClientService } from 'src/app/core/client/services/client.service';
-import { ClientListComponent } from './views/client-list/client-list.component';
 import { ClientDetailsComponent } from './views/client-details/client-details.component';
 import { SearchClientFieldComponent } from './components/search-client-field/search-client-field.component';
 
 export const clientRouteList: Routes = [
   {
     path: '',
-    component: ClientListComponent,
-    data: {
-      breadcrumb: 'Clients'
-    }
-  },
-  {
-    path: ':id',
     component: ClientDetailsComponent,
     data: {
       breadcrumb: {
@@ -45,7 +37,6 @@ export const clientRouteList: Routes = [
 
 @NgModule({
   declarations: [
-    ClientListComponent,
     ClientDetailsComponent,
     SearchClientFieldComponent
   ],

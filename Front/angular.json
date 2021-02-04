@@ -26,7 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "mdi.svg", "input": "./node_modules/@mdi/angular-material", "output": "./assets" }
+              {
+                "glob": "mdi.svg",
+                "input": "./node_modules/@mdi/angular-material",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -124,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "UberProjet"
+    }
+  },
+  "defaultProject": "UberProjet",
+  "cli": {
+    "analytics": "b5403e50-6d25-4081-8e03-f658f5537a5f"
+  }
 }
