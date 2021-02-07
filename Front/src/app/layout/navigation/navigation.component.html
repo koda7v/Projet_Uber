@@ -1,4 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
+
   <mat-sidenav class="sidenav" fixedInViewport mode="side" opened>
     <mat-toolbar>
       <img src="assets/logo.svg" height="40px">
@@ -12,12 +13,47 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <span>UberProjet</span>
+      <nav class="navbar navbar-expand navbar-primary primary">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a href="/home" class="nav-link" routerLink="home">UberProjet</a>
+          </li>
+          <li class="nav-item" *ngIf="showAdminBoard">
+            <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+          </li>
+          <li class="nav-item" *ngIf="showModeratorBoard">
+            <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+          </li>
+          <li class="nav-item">
+            <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
+      </nav>
     </mat-toolbar>
     <div class="content">
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

@@ -40,7 +40,7 @@ export class ClientDetailsComponent implements OnInit {
   setBreadcrumbAlias(): void {
     this.breadcrumbService.set(
       '@clientName',
-      `${this.client.prenom} ${this.client.nom}`
+      `${this.client.cli_prenom} ${this.client.cli_nom}`
     );
   }
 }

@@ -64,3 +64,15 @@ $active-color: #e79759;
 .mat-list-item.active {
   background-color: $content-background;
 }
+
+a {
+  color:white;
+}
+
+a:hover {
+  color: green;
+}
+
+.navbar {
+  width: inherit;
+}
