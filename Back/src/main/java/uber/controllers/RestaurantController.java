@@ -23,21 +23,26 @@ public class RestaurantController
   RestaurantService restaurantService;
 
   /**
-   * Retourne le client correspondant à l'ID passé en paramètre.
+   * Retourne le restaurant correspondant à l'ID passé en paramètre.
    * 
    * @param id
-   *          ID du Client recherchée.
+   *          ID du Restaurant recherchée.
    */
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Restaurant getFormation(@PathVariable Long id)
+  public Restaurant getRestaurant(@PathVariable Long id)
   {
     return this.restaurantService.findRestaurant(id);
   }
 
+  /**
+   * Retourne tous les restaurants.
+   * 
+   * @return
+   */
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
-  public List<Restaurant> getAllFormations()
+  public List<Restaurant> getAllRestaurants()
   {
     return this.restaurantService.findAllRestaurant();
   }
