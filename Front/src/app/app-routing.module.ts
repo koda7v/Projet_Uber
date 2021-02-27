@@ -11,10 +11,16 @@ import { BoardModeratorComponent } from './jwt/board-moderator/board-moderator.c
 import { BoardAdminComponent } from './jwt/board-admin/board-admin.component';
 
 const routes: Routes = [
+  
   {
     path: 'clients',
     loadChildren: () =>
       import('./core/client/client.module').then((m) => m.ClientModule)
+  },
+  {
+    path: 'restaurants',
+    loadChildren: () =>
+      import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule)
   },
   {
     path: 'plats',
