@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Plat } from 'src/app/core/plat/interfaces/plat.vo';
@@ -26,4 +26,5 @@ export class PlatService {
   get(id: number): Observable<Plat> {
     return this.http.get<Plat>(`${baseUrl}/${id}`);
   }
+
 }

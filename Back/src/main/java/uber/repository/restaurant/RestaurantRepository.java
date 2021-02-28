@@ -12,4 +12,5 @@ public interface RestaurantRepository extends PagingAndSortingRepository<Restaur
 {
   @Override
   List<Restaurant> findAll();
+
 }

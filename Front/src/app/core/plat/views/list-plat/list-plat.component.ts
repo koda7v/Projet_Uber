@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Optional, Inject } from '@angular/core';
 
 import { PlatService } from 'src/app/core/plat/services/plat.service';
 import { Plat } from 'src/app/core/plat/interfaces/plat.vo';
 import { Observable } from 'rxjs';
+import { Restaurant } from 'src/app/core/restaurant/interfaces/restaurant.vo';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-plat',
@@ -15,17 +17,18 @@ export class ListPlatComponent implements OnInit {
   plats: Array<Plat>;
 
   constructor(
-    private platService: PlatService
+    private platService: PlatService,    
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.retrievePlats();
   }
 
   /**
    * Récupération des Plats.
    */
-  retrievePlats(): void {
+  /*retrievePlats(): void {
     this.platService.getAll().subscribe(
       (data: Plat[]) => {
         this.plats = data;
@@ -35,6 +38,8 @@ export class ListPlatComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  }*/
+
+
 
 }

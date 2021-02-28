@@ -18,7 +18,8 @@ export class NavigationComponent {
   constructor(private tokenStorageService: TokenStorageService) {
     this.items = [
       { title: 'Gestion des Clients', route: '/clients', icon: 'person' },
-      { title: 'Voir les restaurants', route: '/restaurants', icon: 'food_bank' },
+      { title: 'Voir les plats', route: '/plats', icon: 'restaurant_menu' },
+      { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'}
     ];
   }
 

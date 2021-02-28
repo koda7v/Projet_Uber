@@ -23,7 +23,7 @@ public class PlatController
   PlatService platService;
 
   /**
-   * Retourne le client correspondant à l'ID passé en paramètre.
+   * Retourne le plat correspondant à l'ID passé en paramètre.
    * 
    * @param id
    * 

@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/plat/plat.module').then((m) => m.PlatModule)
   },
+  {
+    path: 'restaurants',
+    loadChildren: () =>
+      import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule) 
+  },
   
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

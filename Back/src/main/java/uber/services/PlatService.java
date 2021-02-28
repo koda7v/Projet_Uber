@@ -1,6 +1,7 @@
 package uber.services;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,10 @@ public class PlatService
   public List<Plat> findAllPlat()
   {
     return platRepository.findAll();
+  }
+
+  public Set<Plat> findAllPlatsWithRestaurantId(Long IdRestaurant)
+  {
+    return platRepository.findAllPlatWithRestaurantId(IdRestaurant);
   }
 }
