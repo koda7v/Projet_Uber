@@ -13,7 +13,9 @@ public class PhotoConstantSQL
   /*---------- Colonne ---------*/
   public static final String ID_COLUMN_NAME = "pht_id";
 
-  public static final String PHOTO_COLUMN_NAME = "pht_photo";
+  public static final String NAME_COLUMN_NAME = "pht_name";
+
+  public static final String BLOB_COLUMN_NAME = "pht_photo";
 
   public static final String COMMENTAIRE_COLUMN_NAME = "pht_commentaire";
 

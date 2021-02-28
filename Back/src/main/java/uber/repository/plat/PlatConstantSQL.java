@@ -19,6 +19,8 @@ public class PlatConstantSQL
 
   public static final String PRIX_COLUMN_NAME = "plt_prix";
 
+  public static final String PHOTO_COLUMN_ID = "pht_id";
+
   /*---------- Clés étrangères ---------*/
 
   public static final String FK_ID_RESTAURANT_COLUMN_NAME = "rst_id";

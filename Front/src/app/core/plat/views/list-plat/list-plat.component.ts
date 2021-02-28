@@ -5,6 +5,7 @@ import { Plat } from 'src/app/core/plat/interfaces/plat.vo';
 import { Observable } from 'rxjs';
 import { Restaurant } from 'src/app/core/restaurant/interfaces/restaurant.vo';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-plat',
@@ -17,18 +18,23 @@ export class ListPlatComponent implements OnInit {
   plats: Array<Plat>;
 
   constructor(
-    private platService: PlatService,    
-    private router: Router,
-    private route: ActivatedRoute,
+    private platService: PlatService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
+    this.retrievePlats();
+  }
+
+  getImage(image: string): any{
+    const objectURL = 'data:image/jpeg;base64,' + image;
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
   /**
    * Récupération des Plats.
    */
-  /*retrievePlats(): void {
+  retrievePlats(): void {
     this.platService.getAll().subscribe(
       (data: Plat[]) => {
         this.plats = data;
@@ -38,7 +44,7 @@ export class ListPlatComponent implements OnInit {
         console.log(error);
       }
     );
-  }*/
+  }
 
 
 

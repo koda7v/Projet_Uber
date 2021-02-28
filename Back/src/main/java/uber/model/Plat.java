@@ -28,12 +28,26 @@ public class Plat
   @Column(PlatConstantSQL.PRIX_COLUMN_NAME)
   protected Integer prix;
 
-  public Plat(Long id, String nom, String description, Integer prix)
+  @Column(PlatConstantSQL.PHOTO_COLUMN_ID)
+  protected Photo photo;
+
+  public Plat(Long id, String nom, String description, Integer prix, Photo photo)
   {
     this.id = id;
     this.nom = nom;
     this.description = description;
     this.prix = prix;
+    this.photo = photo;
+  }
+
+  public Photo getPhoto()
+  {
+    return photo;
+  }
+
+  public void setPhoto(Photo photo)
+  {
+    this.photo = photo;
   }
 
   public Long getId()

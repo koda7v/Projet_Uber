@@ -1,5 +1,6 @@
 package uber.model;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
@@ -16,16 +17,22 @@ public class Photo
   protected Long id;
 
   @NotEmpty
-  // @Column(PhotoConstantSQL.PHOTO_COLUMN_NAME, 1000)
-  private byte[] photo;
+  @Column(PhotoConstantSQL.NAME_COLUMN_NAME)
+  protected String name;
+
+  @NotEmpty
+  @Lob
+  @Column(PhotoConstantSQL.BLOB_COLUMN_NAME)
+  protected byte[] photo;
 
   @NotEmpty
   @Column(PhotoConstantSQL.COMMENTAIRE_COLUMN_NAME)
   protected String commentaire;
 
-  public Photo(Long id, byte[] photo, String commentaire)
+  public Photo(Long id, String name, byte[] photo, String commentaire)
   {
     this.id = id;
+    this.name = name;
     this.photo = photo;
     this.commentaire = commentaire;
   }
@@ -38,6 +45,16 @@ public class Photo
   public void setId(Long id)
   {
     this.id = id;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
   }
 
   public byte[] getPhoto()

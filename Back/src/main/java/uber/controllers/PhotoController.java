@@ -36,6 +36,22 @@ public class PhotoController
     return this.photoService.findPhoto(id);
   }
 
+  @GetMapping("/files")
+  public List<Photo> getListFiles()
+  {
+    List<Photo> files = photoService.findAllPhoto();
+
+//      return new ResponseFile(
+//          photo.getName(),
+//          photo.getCommentaire();
+//          fileDownloadUri,
+//          photo.getType(),
+//          photo.getData().length);
+//    }).collect(Collectors.toList());
+
+    return files;
+  }
+
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
   public List<Photo> getAllPhoto()

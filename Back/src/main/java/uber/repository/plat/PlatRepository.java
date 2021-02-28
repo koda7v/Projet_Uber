@@ -26,4 +26,10 @@ public interface PlatRepository extends PagingAndSortingRepository<Plat, Long>
   @Query("SELECT " + PlatConstantSQL.TABLE_NAME + ".* " + "FROM " + PlatConstantSQL.TABLE_NAME + " WHERE "
       + PlatConstantSQL.TABLE_NAME + "." + PlatConstantSQL.FK_ID_RESTAURANT_COLUMN_NAME + " = :idRestaurant")
   Set<Plat> findAllPlatWithRestaurantId(@Param("idRestaurant") Long idRestaurant);
+
+  @Query("SELECT " + PlatConstantSQL.TABLE_NAME + "." + PlatConstantSQL.PHOTO_COLUMN_ID + "FROM "
+      + PlatConstantSQL.TABLE_NAME + " WHERE " + PlatConstantSQL.TABLE_NAME + "." + PlatConstantSQL.ID_COLUMN_NAME
+      + " = :idPlat")
+  Long getIdPhoto(@Param("idPlat") Long idPlat);
+
 }

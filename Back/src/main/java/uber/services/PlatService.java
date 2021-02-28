@@ -16,6 +16,9 @@ public class PlatService
   @Autowired
   protected PlatRepository platRepository;
 
+  @Autowired
+  protected PhotoService photoService;
+
   public Plat findPlat(Long id)
   {
     return platRepository.findById(id)
@@ -24,7 +27,18 @@ public class PlatService
 
   public List<Plat> findAllPlat()
   {
-    return platRepository.findAll();
+    List<Plat> plats = this.platRepository.findAll();
+//    System.out.println(plats.get(0).getDescription());
+//    for (Plat currentPlat : plats)
+//    {
+//      System.out.println(currentPlat.getId());
+//      long idPhoto = this.platRepository.getIdPhoto(currentPlat.getId());
+//      System.out.println(idPhoto);
+//      Photo photo = this.photoService.findPhoto(idPhoto);
+//      currentPlat.setPhoto(photo);
+//
+//    }
+    return plats;
   }
 
   public Set<Plat> findAllPlatsWithRestaurantId(Long IdRestaurant)
