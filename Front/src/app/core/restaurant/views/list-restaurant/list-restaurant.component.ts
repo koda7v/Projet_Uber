@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { RestaurantService } from 'src/app/core/restaurant/services/restaurant.service';
 import { Restaurant } from '../../interfaces/restaurant.vo';
-import { RestaurantService } from '../../services/restaurant.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-restaurant',
@@ -13,19 +14,18 @@ export class ListRestaurantComponent implements OnInit {
 
   breadcrumb = false;
   restaurants: Array<Restaurant>;
-  idRestaurant: String;
 
-  constructor(private restaurantService: RestaurantService, 
-    private router: Router,
-    private route: ActivatedRoute,) { }
+  constructor(
+    private restaurantService: RestaurantService,
+    private sanitizer: DomSanitizer,
+  ) { }
 
   ngOnInit(): void {
     this.retrieveRestaurants();
-    this.idRestaurant = this.route.snapshot.paramMap.get('id');
   }
 
   /**
-   * Récupération des Restaurants.
+   * Récupération des Restaurant.
    */
   retrieveRestaurants(): void {
     this.restaurantService.getAll().subscribe(
@@ -39,17 +39,9 @@ export class ListRestaurantComponent implements OnInit {
     );
   }
 
-  findPlatsWithRestaurantId(id: number) {
-    this.restaurantService.findPlatsWithRestaurantId(id).subscribe(
-      (data: Restaurant[]) => {
-        this.restaurants = data;
-        console.log(data);
-        //this.router.navigate(['plats'], { relativeTo: this.route });
-      },
-      (error: Observable<never>) => {
-        console.log(error);
-      }
-    );
+  getImage(image: string): any{
+    const objectURL = 'data:image/jpeg;base64,' + image;
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
 }

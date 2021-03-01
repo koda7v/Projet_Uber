@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 import { RestaurantService } from 'src/app/core/restaurant/services/restaurant.service';
-import { ListRestaurantComponent } from 'src/app/core/restaurant/components/list-restaurant/list-restaurant.component';
+import { ListRestaurantComponent } from 'src/app/core/restaurant/views/list-restaurant/list-restaurant.component';
 
 export const restaurantRouteList: Routes = [
   {
@@ -25,7 +26,8 @@ export const restaurantRouteList: Routes = [
     RouterModule.forChild(restaurantRouteList),
     CommonModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ]
 })
 export class RestaurantModule { }

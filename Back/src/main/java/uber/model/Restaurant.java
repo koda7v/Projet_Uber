@@ -27,14 +27,18 @@ public class Restaurant
   @Column(RestaurantConstantSQL.DESCRIPTION_COLUMN_NAME)
   protected String description;
 
+  @Column(RestaurantConstantSQL.PHOTO_COLUMN_NAME)
+  protected Photo photo;
+
   @MappedCollection(keyColumn = RestaurantConstantSQL.ID_COLUMN_NAME, idColumn = RestaurantConstantSQL.FK_ID_RESTAURANT_COLUMN)
   protected Set<Plat> plats;
 
-  public Restaurant(Long id, String nom, String description)
+  public Restaurant(Long id, String nom, String description, Photo photo)
   {
     this.id = id;
     this.nom = nom;
     this.description = description;
+    this.photo = photo;
 
     this.plats = new HashSet<>();
   }
@@ -51,6 +55,16 @@ public class Restaurant
   public Long getId()
   {
     return id;
+  }
+
+  public Photo getPhoto()
+  {
+    return photo;
+  }
+
+  public void setPhoto(Photo photo)
+  {
+    this.photo = photo;
   }
 
   public void setId(Long id)

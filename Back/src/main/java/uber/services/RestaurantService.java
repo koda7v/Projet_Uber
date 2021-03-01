@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uber.exceptions.customs.ResourceNotFoundException;
+import uber.model.Photo;
 import uber.model.Restaurant;
 import uber.repository.restaurant.RestaurantRepository;
 
@@ -15,6 +16,9 @@ public class RestaurantService
   @Autowired
   protected RestaurantRepository restaurantRepository;
 
+  @Autowired
+  protected PhotoService photoService;
+
   public Restaurant findRestaurant(Long id)
   {
     return restaurantRepository.findById(id)
@@ -23,7 +27,14 @@ public class RestaurantService
 
   public List<Restaurant> findAllRestaurant()
   {
-    return restaurantRepository.findAll();
+    List<Restaurant> restaurants = restaurantRepository.findAll();
+    for (Restaurant currentRestaurant : restaurants)
+    {
+      Long idPhoto = this.restaurantRepository.getIdPhoto(currentRestaurant.getId());
+      Photo photo = this.photoService.findPhoto(idPhoto);
+      currentRestaurant.setPhoto(photo);
+    }
+    return restaurants;
   }
 
 }

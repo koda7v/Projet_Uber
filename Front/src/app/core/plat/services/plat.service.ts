@@ -27,4 +27,12 @@ export class PlatService {
     return this.http.get<Plat>(`${baseUrl}/${id}`);
   }
 
+  /**
+   * Récupération des Habilitations liées à une Personne.
+   * @param idPersonne ID de la Personne.
+   */
+  findPlatsWithRestaurantId(idRestaurant: number): Observable<Plat[]> {
+    return this.http.get<Plat[]>(`${baseUrl}/searchRestaurant/${idRestaurant}`);
+  }
+
 }

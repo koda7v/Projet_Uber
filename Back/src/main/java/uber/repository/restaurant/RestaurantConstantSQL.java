@@ -19,6 +19,8 @@ public class RestaurantConstantSQL
 
   public static final String DESCRIPTION_COLUMN_NAME = "rst_description";
 
+  public static final String PHOTO_COLUMN_NAME = "pht_id";
+
   /*---------- Clés étrangères ---------*/
 
   public static final String FK_ID_RESTAURANT_COLUMN = "rst_id";

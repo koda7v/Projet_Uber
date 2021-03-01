@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uber.exceptions.customs.ResourceNotFoundException;
+import uber.model.Photo;
 import uber.model.Plat;
 import uber.repository.plat.PlatRepository;
 
@@ -27,22 +28,18 @@ public class PlatService
 
   public List<Plat> findAllPlat()
   {
-    List<Plat> plats = this.platRepository.findAll();
-//    System.out.println(plats.get(0).getDescription());
-//    for (Plat currentPlat : plats)
-//    {
-//      System.out.println(currentPlat.getId());
-//      long idPhoto = this.platRepository.getIdPhoto(currentPlat.getId());
-//      System.out.println(idPhoto);
-//      Photo photo = this.photoService.findPhoto(idPhoto);
-//      currentPlat.setPhoto(photo);
-//
-//    }
-    return plats;
+    return this.platRepository.findAll();
   }
 
   public Set<Plat> findAllPlatsWithRestaurantId(Long IdRestaurant)
   {
-    return platRepository.findAllPlatWithRestaurantId(IdRestaurant);
+    Set<Plat> plats = platRepository.findAllPlatWithRestaurantId(IdRestaurant);
+    for (Plat curerentPlat : plats)
+    {
+      Long idPhoto = this.platRepository.getIdPhoto(curerentPlat.getId());
+      Photo photo = this.photoService.findPhoto(idPhoto);
+      curerentPlat.setPhoto(photo);
+    }
+    return plats;
   }
 }

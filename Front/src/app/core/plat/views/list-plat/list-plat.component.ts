@@ -16,14 +16,16 @@ export class ListPlatComponent implements OnInit {
 
   breadcrumb = false;
   plats: Array<Plat>;
+  isClientConnected: boolean;
 
   constructor(
     private platService: PlatService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.retrievePlats();
+    this.retrievePlats2(Number(this.route.snapshot.paramMap.get('id')));
   }
 
   getImage(image: string): any{
@@ -45,6 +47,24 @@ export class ListPlatComponent implements OnInit {
       }
     );
   }
+
+  retrievePlats2(idRestaurant: number): void{
+    this.platService.findPlatsWithRestaurantId(idRestaurant).subscribe(
+      (data: Plat[]) => {
+        this.plats = data;
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getInformationConnexion(): void{
+    console.log(sessionStorage.getItem('auth-token'));
+  }
+
+
 
 
 

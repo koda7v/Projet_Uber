@@ -26,14 +26,4 @@ export class RestaurantService {
   get(id: number): Observable<Restaurant> {
     return this.http.get<Restaurant>(`${baseUrl}/${id}`);
   }
-
-    /**
-   * Récupération des Habilitations liées à une Personne.
-   * @param idPersonne ID de la Personne.
-   */
-  findPlatsWithRestaurantId(idRestaurant: number): Observable<Restaurant[]> {
-    const params = new HttpParams().set('idRestaurant', idRestaurant.toString());
-
-    return this.http.get<Restaurant[]>(`${baseUrl}/restaurant`, { params });
-  }
 }

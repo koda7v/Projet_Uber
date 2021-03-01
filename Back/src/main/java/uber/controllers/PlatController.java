@@ -1,6 +1,7 @@
 package uber.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,13 @@ public class PlatController
   public List<Plat> getAllPlats()
   {
     return this.platService.findAllPlat();
+  }
+
+  @GetMapping("/searchRestaurant/{idRestaurant}")
+  @ResponseStatus(HttpStatus.OK)
+  public Set<Plat> findPlatWithRestaurantId(@PathVariable Long idRestaurant)
+  {
+    return this.platService.findAllPlatsWithRestaurantId(idRestaurant);
   }
 
 }

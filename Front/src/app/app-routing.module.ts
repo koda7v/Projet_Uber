@@ -11,7 +11,6 @@ import { BoardModeratorComponent } from './jwt/board-moderator/board-moderator.c
 import { BoardAdminComponent } from './jwt/board-admin/board-admin.component';
 
 const routes: Routes = [
-  
   {
     path: 'clients',
     loadChildren: () =>
@@ -23,16 +22,10 @@ const routes: Routes = [
       import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule)
   },
   {
-    path: 'plats',
+    path: 'plats/:id',
     loadChildren: () =>
       import('./core/plat/plat.module').then((m) => m.PlatModule)
   },
-  {
-    path: 'restaurants',
-    loadChildren: () =>
-      import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule) 
-  },
-  
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
