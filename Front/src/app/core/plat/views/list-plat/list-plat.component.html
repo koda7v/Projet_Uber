@@ -18,7 +18,12 @@
                 </mat-card-actions> -->
             <mat-card-footer>
                 <div>{{plat.prix}}</div>
-                <div></div>
+                <div *ngIf="show; else notShow">
+                    <button mat-button color="primary">Ajouter au panier</button>
+                </div>
+
+                <ng-template #notShow>
+                </ng-template>
             </mat-card-footer>
         </mat-card>
     </mat-grid-tile>

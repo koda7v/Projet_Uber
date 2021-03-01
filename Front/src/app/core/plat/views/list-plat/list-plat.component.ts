@@ -17,15 +17,19 @@ export class ListPlatComponent implements OnInit {
   breadcrumb = false;
   plats: Array<Plat>;
   isClientConnected: boolean;
+  show: boolean;
 
   constructor(
     private platService: PlatService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.show = false;
+   }
 
   ngOnInit(): void {
     this.retrievePlats2(Number(this.route.snapshot.paramMap.get('id')));
+    this.getInformationConnexion();
   }
 
   getImage(image: string): any{
@@ -61,7 +65,11 @@ export class ListPlatComponent implements OnInit {
   }
 
   getInformationConnexion(): void{
-    console.log(sessionStorage.getItem('auth-token'));
+    if (sessionStorage.getItem('auth-token') === null){
+      this.show = false;
+    }else{
+      this.show = true;
+    }
   }
 
 
