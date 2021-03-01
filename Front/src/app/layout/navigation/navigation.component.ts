@@ -16,27 +16,33 @@ export class NavigationComponent {
   items: unknown[];
 
   constructor(private tokenStorageService: TokenStorageService) {
-    this.items = [
-      { title: 'Gestion des Clients', route: '/clients', icon: 'person' },
-      { title: 'Voir les plats', route: '/plats', icon: 'restaurant_menu' },
-      { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'}
-    ];
+    this.gestionNavigation();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-  
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-  
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-  
       this.username = user.username;
     }
   }
-  
+
+  gestionNavigation(): void{
+    const user = this.tokenStorageService.getUser();
+    if (user === null || user.roles.includes('ROLE_USER')){
+      this.items = [
+        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'}
+      ];
+    }else if (user.roles.includes('ROLE_ADMIN')){
+      this.items = [
+        { title: 'Gestion des Restaurants', route: '/gestionRestaurant', icon: 'dining' }
+      ];
+    }
+  }
+
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();

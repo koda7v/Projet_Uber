@@ -12,9 +12,9 @@ import { BoardAdminComponent } from './jwt/board-admin/board-admin.component';
 
 const routes: Routes = [
   {
-    path: 'clients',
+    path: 'gestionRestaurant',
     loadChildren: () =>
-      import('./core/client/client.module').then((m) => m.ClientModule)
+      import('./core/gestion-restaurant/gestion-restaurant.module').then((m) => m.GestionRestaurantModule)
   },
   {
     path: 'restaurants',
