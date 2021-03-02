@@ -5,17 +5,25 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
+import uber.repository.panier.PanierConstantSQL;
+
+@Table(PanierConstantSQL.TABLE_NAME)
 public class Panier
 {
   @Id
+  @Column(PanierConstantSQL.ID_COLUMN_NAME)
   protected Long id;
 
+  @Column(PanierConstantSQL.TOTAL_COLUMN_NAME)
   protected Long total;
 
+  @Column(PanierConstantSQL.DATE_COLUMN_NAME)
   protected Date date;
 
-  @Id
+  @Column(PanierConstantSQL.FK_ID_USER_COLUMN_NAME)
   protected Long idClient;
 
   protected List<Plat> plats;

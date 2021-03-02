@@ -31,5 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+application.properties
+/.gitignore
+/.metadata/
 /.mvn/
+/mvnw
+/mvnw.cmd
+/pom.xml
 /src/
