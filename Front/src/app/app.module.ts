@@ -24,7 +24,6 @@ import { BoardModeratorComponent } from './jwt/board-moderator/board-moderator.c
 import { BoardUserComponent } from './jwt/board-user/board-user.component';
 
 import { authInterceptorProviders } from './jwt/_helpers/auth.interceptor';
-import { ListePanierPlatsComponent } from './panier/component/liste-panier-plats/liste-panier-plats.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -38,7 +37,6 @@ registerLocaleData(localeFr, 'fr');
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    ListePanierPlatsComponent,
   ],
   imports: [
     BrowserModule,
