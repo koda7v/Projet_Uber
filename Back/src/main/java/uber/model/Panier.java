@@ -24,16 +24,16 @@ public class Panier
   protected Date date;
 
   @Column(PanierConstantSQL.FK_ID_USER_COLUMN_NAME)
-  protected Long idClient;
+  protected Long idUser;
 
   protected List<Plat> plats;
 
-  public Panier(Long id, Long total, Date date, Long idClient)
+  public Panier(Long id, Long total, Date date, Long idUser)
   {
     this.id = id;
     this.total = total;
     this.date = date;
-    this.idClient = idClient;
+    this.idUser = idUser;
 
     this.plats = new ArrayList<>();
   }
@@ -77,14 +77,14 @@ public class Panier
     this.date = date;
   }
 
-  public Long getIdClient()
+  public Long getIdUser()
   {
-    return idClient;
+    return idUser;
   }
 
-  public void setIdClient(Long idClient)
+  public void setIdUser(Long idUser)
   {
-    this.idClient = idClient;
+    this.idUser = idUser;
   }
 
   public List<Plat> getPlats()

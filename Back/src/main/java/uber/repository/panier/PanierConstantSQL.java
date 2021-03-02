@@ -23,5 +23,5 @@ public class PanierConstantSQL
 
   /*---------- Table de jointure ---------*/
 
-  public static final String JOIN_TABLE_PANIER_PLAT_NAME = "t_panier_plat_tpp";
+  // public static final String JOIN_TABLE_PANIER_PLAT_NAME = "t_panier_plat_tpp";
 }

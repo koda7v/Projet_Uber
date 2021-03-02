@@ -30,7 +30,7 @@ public class PanierController
    */
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Panier getPlat(@PathVariable Long id)
+  public Panier getPanier(@PathVariable Long id)
   {
     return this.panierService.findPanier(id);
   }
@@ -42,8 +42,9 @@ public class PanierController
    */
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
-  public List<Panier> getAllPlats()
+  public List<Panier> getAllPaniers()
   {
+
     return this.panierService.findAllPanier();
   }
 

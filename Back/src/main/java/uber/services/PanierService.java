@@ -24,7 +24,8 @@ public class PanierService
 
   public List<Panier> findAllPanier()
   {
-    return this.panierRepository.findAll();
+    System.out.println("OOOOZRIHREVUHREVIBREIGVB");
+    return this.panierRepository.findPaniers();
   }
 
 }
