@@ -1,4 +1,4 @@
-package uber.repository.client;
+package uber.repository.user;
 
 import java.util.Optional;
 

@@ -11,34 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import uber.model.Client;
-import uber.services.ClientService;
+import uber.model.User;
+import uber.services.UserService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/client")
-public class ClientController
+@RequestMapping("/user")
+public class UserController
 {
   @Autowired
-  ClientService clientService;
+  UserService userService;
 
   /**
-   * Retourne le client correspondant à l'ID passé en paramètre.
+   * Retourne le user correspondant à l'ID passé en paramètre.
    * 
    * @param id
-   *          ID du Client recherchée.
+   *          ID du User recherchée.
    */
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Client getFormation(@PathVariable Long id)
+  public User getFormation(@PathVariable Long id)
   {
-    return this.clientService.findClient(id);
+    return this.userService.findUser(id);
   }
 
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
-  public List<Client> getAllFormations()
+  public List<User> getAllFormations()
   {
-    return this.clientService.findAllClients();
+    return this.userService.findAllUsers();
   }
 }

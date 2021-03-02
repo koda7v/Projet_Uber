@@ -15,7 +15,12 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.springframework.data.relational.core.mapping.Column;
+
+import uber.repository.user.UserConstantsSQL;
 
 @Entity
 @Table(name = "t_users_use", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
@@ -24,33 +29,93 @@ public class User
 {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(UserConstantsSQL.ID_COLUMN_NAME)
   private Long id;
 
   @NotBlank
   @Size(max = 20)
+  @Column(UserConstantsSQL.USERNAME_COLOMN_NAME)
   private String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
+  @Column(UserConstantsSQL.MAIL_COLUMN_NAME)
   private String email;
 
   @NotBlank
   @Size(max = 120)
+  @Column(UserConstantsSQL.PASSWORD_COLOMN_NAME)
   private String password;
 
+  @NotEmpty
+  @Column(UserConstantsSQL.NOM_COLUMN_NAME)
+  protected String nom;
+
+  @NotEmpty
+  @Column(UserConstantsSQL.PRENOM_COLUMN_NAME)
+  protected String prenom;
+
+  @NotEmpty
+  @Column(UserConstantsSQL.ADRESSE_COLUMN_NAME)
+  protected String adresse;
+
+  @NotEmpty(message = "Votre numero de telephone doit avoir des chiffres")
+  @Size(min = 10, max = 12, message = "Votre numero de telephone doit avoir entre 10 et 12 chiffres")
+  @Column(UserConstantsSQL.NUMERO_TELEPHONE_COLUMN_NAME)
+  protected String telephone;
+
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "t_user_roles_use", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(name = "t_user_roles_use", joinColumns = @JoinColumn(name = "use_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
   private Set<Role> roles = new HashSet<>();
 
   public User()
   {}
 
-  public User(String username, String email, String password)
+  /**
+   * 
+   * @param id
+   * @param username
+   * @param email
+   * @param password
+   * @param nom
+   * @param prenom
+   * @param adresse
+   * @param telephone
+   */
+  public User(Long id, String username, String email, String password, String nom, String prenom, String adresse,
+              String telephone)
+  {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.adresse = adresse;
+    this.telephone = telephone;
+  }
+
+  /**
+   * 
+   * @param username
+   * @param email
+   * @param password
+   * @param nom
+   * @param prenom
+   * @param adresse
+   * @param telephone
+   */
+  public User(String username, String email, String password, String nom, String prenom, String adresse,
+              String telephone)
   {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.adresse = adresse;
+    this.telephone = telephone;
   }
 
   public Long getId()
@@ -101,5 +166,45 @@ public class User
   public void setRoles(Set<Role> roles)
   {
     this.roles = roles;
+  }
+
+  public String getNom()
+  {
+    return nom;
+  }
+
+  public void setNom(String nom)
+  {
+    this.nom = nom;
+  }
+
+  public String getPrenom()
+  {
+    return prenom;
+  }
+
+  public void setPrenom(String prenom)
+  {
+    this.prenom = prenom;
+  }
+
+  public String getAdresse()
+  {
+    return adresse;
+  }
+
+  public void setAdresse(String adresse)
+  {
+    this.adresse = adresse;
+  }
+
+  public String getTelephone()
+  {
+    return telephone;
+  }
+
+  public void setTelephone(String telephone)
+  {
+    this.telephone = telephone;
   }
 }

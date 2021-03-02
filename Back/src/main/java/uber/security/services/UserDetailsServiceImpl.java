@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import uber.model.User;
-import uber.repository.client.UserRepository;
+import uber.repository.user.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService

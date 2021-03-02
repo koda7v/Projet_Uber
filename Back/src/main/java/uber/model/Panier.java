@@ -1,8 +1,8 @@
 package uber.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -18,7 +18,7 @@ public class Panier
   @Id
   protected Long idClient;
 
-  protected Set<Plat> plats;
+  protected List<Plat> plats;
 
   public Panier(Long id, Long total, Date date, Long idClient)
   {
@@ -27,7 +27,7 @@ public class Panier
     this.date = date;
     this.idClient = idClient;
 
-    this.plats = new HashSet<>();
+    this.plats = new ArrayList<>();
   }
 
   /*---------- Plats ---------*/
@@ -79,12 +79,12 @@ public class Panier
     this.idClient = idClient;
   }
 
-  public Set<Plat> getPlats()
+  public List<Plat> getPlats()
   {
     return plats;
   }
 
-  public void setPlats(Set<Plat> plats)
+  public void setPlats(List<Plat> plats)
   {
     this.plats = plats;
   }

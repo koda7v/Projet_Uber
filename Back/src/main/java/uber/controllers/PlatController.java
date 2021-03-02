@@ -36,6 +36,11 @@ public class PlatController
     return this.platService.findPlat(id);
   }
 
+  /**
+   * retourne une liste de plats
+   * 
+   * @return
+   */
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
   public List<Plat> getAllPlats()
@@ -43,6 +48,12 @@ public class PlatController
     return this.platService.findAllPlat();
   }
 
+  /**
+   * retourne une liste de plat d'un restaurant
+   * 
+   * @param idRestaurant
+   * @return
+   */
   @GetMapping("/searchRestaurant/{idRestaurant}")
   @ResponseStatus(HttpStatus.OK)
   public Set<Plat> findPlatWithRestaurantId(@PathVariable Long idRestaurant)

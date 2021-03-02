@@ -17,7 +17,6 @@ export class ListPlatComponent implements OnInit {
 
   breadcrumb = false;
   plats: Array<Plat>;
-  isClientConnected: boolean;
   show: boolean;
 
   constructor(
@@ -30,7 +29,7 @@ export class ListPlatComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.retrievePlats2(Number(this.route.snapshot.paramMap.get('id')));
+    this.retrievePlats(Number(this.route.snapshot.paramMap.get('id')));
     this.getInformationConnexion();
   }
 
@@ -40,21 +39,9 @@ export class ListPlatComponent implements OnInit {
   }
 
   /**
-   * Récupération des Plats.
+   * Récupération des Plats d'un restaurant
    */
-  retrievePlats(): void {
-    this.platService.getAll().subscribe(
-      (data: Plat[]) => {
-        this.plats = data;
-        console.log(data);
-      },
-      (error: Observable<never>) => {
-        console.log(error);
-      }
-    );
-  }
-
-  retrievePlats2(idRestaurant: number): void{
+  retrievePlats(idRestaurant: number): void{
     this.platService.findPlatsWithRestaurantId(idRestaurant).subscribe(
       (data: Plat[]) => {
         this.plats = data;

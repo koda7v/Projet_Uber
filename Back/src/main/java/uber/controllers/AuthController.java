@@ -27,8 +27,8 @@ import uber.payload.request.LoginRequest;
 import uber.payload.request.SignupRequest;
 import uber.payload.response.JwtResponse;
 import uber.payload.response.MessageResponse;
-import uber.repository.client.RoleRepository;
-import uber.repository.client.UserRepository;
+import uber.repository.user.RoleRepository;
+import uber.repository.user.UserRepository;
 import uber.security.jwt.JwtUtils;
 import uber.security.services.UserDetailsImpl;
 
@@ -85,7 +85,8 @@ public class AuthController
 
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
-        encoder.encode(signUpRequest.getPassword()));
+        encoder.encode(signUpRequest.getPassword()), signUpRequest.getNom(), signUpRequest.getPrenom(),
+        signUpRequest.getAdresse(), signUpRequest.getTelephone());
 
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();
