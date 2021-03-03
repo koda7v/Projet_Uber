@@ -2,33 +2,39 @@ package uber.model;
 
 import org.springframework.data.annotation.Id;
 
-public class HistoriqueCommande {
+public class HistoriqueCommande
+{
 
-	@Id
-	protected Long id;
+  @Id
+  protected Long id;
 
-	@Id
-	protected Long idClient;
+  @Id
+  protected Long idUser;
 
-	public HistoriqueCommande(Long id, Long idClient) {
-		this.id = id;
-		this.idClient = idClient;
-	}
+  public HistoriqueCommande(Long id, Long idUser)
+  {
+    this.id = id;
+    this.idUser = idUser;
+  }
 
-	public Long getId() {
-		return id;
-	}
+  public Long getId()
+  {
+    return id;
+  }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public void setId(Long id)
+  {
+    this.id = id;
+  }
 
-	public Long getIdClient() {
-		return idClient;
-	}
+  public Long getIdUser()
+  {
+    return idUser;
+  }
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
-	}
+  public void setIdUser(Long idUser)
+  {
+    this.idUser = idUser;
+  }
 
 }

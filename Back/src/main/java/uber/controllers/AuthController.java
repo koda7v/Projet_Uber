@@ -82,6 +82,24 @@ public class AuthController
     {
       return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
     }
+    if (userRepository.existsByPrenom(signUpRequest.getPrenom()))
+    {
+      return ResponseEntity.badRequest().body(new MessageResponse("Error: Prenom is already taken!"));
+    }
+
+    if (userRepository.existsByAdresse(signUpRequest.getAdresse()))
+    {
+      return ResponseEntity.badRequest().body(new MessageResponse("Error: Adresse is already in use!"));
+    }
+    if (userRepository.existsByNom(signUpRequest.getNom()))
+    {
+      return ResponseEntity.badRequest().body(new MessageResponse("Error: Nom is already taken!"));
+    }
+
+    if (userRepository.existsByTelephone(signUpRequest.getTelephone()))
+    {
+      return ResponseEntity.badRequest().body(new MessageResponse("Error: Telephone is already in use!"));
+    }
 
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),

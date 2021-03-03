@@ -14,23 +14,23 @@ import uber.repository.user.UserConstantsSQL;
 public class SignupRequest
 {
 
-  private Set<String> role;
+  protected Set<String> role;
 
   @NotBlank
   @Size(max = 20)
   @Column(UserConstantsSQL.USERNAME_COLOMN_NAME)
-  private String username;
+  protected String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
   @Column(UserConstantsSQL.MAIL_COLUMN_NAME)
-  private String email;
+  protected String email;
 
   @NotBlank
   @Size(max = 120)
   @Column(UserConstantsSQL.PASSWORD_COLOMN_NAME)
-  private String password;
+  protected String password;
 
   @NotEmpty
   @Column(UserConstantsSQL.NOM_COLUMN_NAME)

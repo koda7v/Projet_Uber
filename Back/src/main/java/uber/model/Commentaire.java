@@ -14,7 +14,7 @@ public class Commentaire
 	protected String text;
 	
 	@Id
-	protected Long idClient;
+	protected Long idUser;
 	
 	@Id
 	protected Long idPlat;
@@ -23,13 +23,13 @@ public class Commentaire
 	 * 
 	 * @param id
 	 * @param text
-	 * @param idClient
+	 * @param idUser
 	 * @param idPlat
 	 */
-	public Commentaire(Long id, String text, Long idClient, Long idPlat) {
+	public Commentaire(Long id, String text, Long idUser, Long idPlat) {
 		this.id = id;
 		this.text = text;
-		this.idClient = idClient;
+		this.idUser = idUser;
 		this.idPlat = idPlat;
 	}
 
@@ -49,12 +49,12 @@ public class Commentaire
 		this.text = text;
 	}
 
-	public Long getIdClient() {
-		return idClient;
+	public Long getIdUser() {
+		return idUser;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
 	}
 
 	public Long getIdPlat() {

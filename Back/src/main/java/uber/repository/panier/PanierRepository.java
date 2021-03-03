@@ -14,11 +14,12 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
   /**
    * Récupère les paniers correspondant à l'id d'un user.
    * 
-   * @param idRestaurant
+   * @param
    * @return
    */
 
-  @Query("SELECT " + PanierConstantSQL.TABLE_NAME + ".* " + " FROM " + PanierConstantSQL.TABLE_NAME)
+  @Query("SELECT " + PanierConstantSQL.TABLE_NAME + ".*" + " FROM " + PanierConstantSQL.TABLE_NAME + " WHERE "
+      + PanierConstantSQL.TABLE_NAME + "." + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = 1")
   List<Panier> findPaniers();
 
 }
