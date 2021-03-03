@@ -23,19 +23,31 @@ public class UserDetailsImpl implements UserDetails
 
   private String email;
 
+  protected String adresse;
+
+  protected String nom;
+
+  protected String prenom;
+
+  protected String telephone;
+
   @JsonIgnore
   private String password;
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,
-                         Collection<? extends GrantedAuthority> authorities)
+  public UserDetailsImpl(Long id, String username, String email, String password, String adresse, String nom,
+                         String prenom, String telephone, Collection<? extends GrantedAuthority> authorities)
   {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
+    this.adresse = adresse;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.telephone = telephone;
   }
 
   public static UserDetailsImpl build(User user)
@@ -43,7 +55,8 @@ public class UserDetailsImpl implements UserDetails
     List<GrantedAuthority> authorities = user.getRoles().stream()
         .map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
-    return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
+    return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getAdresse(),
+        user.getNom(), user.getPrenom(), user.getTelephone(), authorities);
   }
 
   @Override
@@ -96,6 +109,46 @@ public class UserDetailsImpl implements UserDetails
   public boolean isEnabled()
   {
     return true;
+  }
+
+  public String getAdresse()
+  {
+    return adresse;
+  }
+
+  public void setAdresse(String adresse)
+  {
+    this.adresse = adresse;
+  }
+
+  public String getNom()
+  {
+    return nom;
+  }
+
+  public void setNom(String nom)
+  {
+    this.nom = nom;
+  }
+
+  public String getPrenom()
+  {
+    return prenom;
+  }
+
+  public void setPrenom(String prenom)
+  {
+    this.prenom = prenom;
+  }
+
+  public String getTelephone()
+  {
+    return telephone;
+  }
+
+  public void setTelephone(String telephone)
+  {
+    this.telephone = telephone;
   }
 
   @Override
