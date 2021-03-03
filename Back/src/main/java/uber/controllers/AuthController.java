@@ -27,7 +27,7 @@ import uber.payload.request.LoginRequest;
 import uber.payload.request.SignupRequest;
 import uber.payload.response.JwtResponse;
 import uber.payload.response.MessageResponse;
-import uber.repository.user.RoleRepository;
+import uber.repository.role.RoleRepository;
 import uber.repository.user.UserRepository;
 import uber.security.jwt.JwtUtils;
 import uber.security.services.UserDetailsImpl;

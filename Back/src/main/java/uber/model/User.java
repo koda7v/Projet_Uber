@@ -3,6 +3,7 @@ package uber.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,51 +19,50 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.relational.core.mapping.Column;
-
 import uber.repository.user.UserConstantsSQL;
 
 @Entity
-@Table(name = "t_users_use", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
-    @UniqueConstraint(columnNames = "email") })
+@Table(name = UserConstantsSQL.TABLE_NAME, uniqueConstraints = {
+    @UniqueConstraint(columnNames = UserConstantsSQL.USERNAME_COLOMN_NAME),
+    @UniqueConstraint(columnNames = UserConstantsSQL.MAIL_COLUMN_NAME) })
 public class User
 {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(UserConstantsSQL.ID_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.ID_COLUMN_NAME)
   private Long id;
 
   @NotBlank
   @Size(max = 20)
-  @Column(UserConstantsSQL.USERNAME_COLOMN_NAME)
+  @Column(name = UserConstantsSQL.USERNAME_COLOMN_NAME)
   private String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
-  @Column(UserConstantsSQL.MAIL_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.MAIL_COLUMN_NAME)
   private String email;
 
   @NotBlank
   @Size(max = 120)
-  @Column(UserConstantsSQL.PASSWORD_COLOMN_NAME)
+  @Column(name = UserConstantsSQL.PASSWORD_COLOMN_NAME)
   private String password;
 
   @NotEmpty
-  @Column(UserConstantsSQL.NOM_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.NOM_COLUMN_NAME)
   protected String nom;
 
   @NotEmpty
-  @Column(UserConstantsSQL.PRENOM_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.PRENOM_COLUMN_NAME)
   protected String prenom;
 
   @NotEmpty
-  @Column(UserConstantsSQL.ADRESSE_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.ADRESSE_COLUMN_NAME)
   protected String adresse;
 
   @NotEmpty(message = "Votre numero de telephone doit avoir des chiffres")
   @Size(min = 10, max = 12, message = "Votre numero de telephone doit avoir entre 10 et 12 chiffres")
-  @Column(UserConstantsSQL.NUMERO_TELEPHONE_COLUMN_NAME)
+  @Column(name = UserConstantsSQL.NUMERO_TELEPHONE_COLUMN_NAME)
   protected String telephone;
 
   @ManyToMany(fetch = FetchType.LAZY)
