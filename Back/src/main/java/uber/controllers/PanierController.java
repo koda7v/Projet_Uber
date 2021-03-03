@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import uber.model.Panier;
+import uber.model.Plat;
 import uber.services.PanierService;
 
 @CrossOrigin
@@ -44,8 +45,14 @@ public class PanierController
   @ResponseStatus(HttpStatus.OK)
   public List<Panier> getAllPaniers()
   {
-
     return this.panierService.findAllPanier();
+  }
+
+  @GetMapping("plats/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Plat> findPlatFromPanier(@PathVariable Long id)
+  {
+    return this.panierService.findPlatFromPanier(id);
   }
 
 }
