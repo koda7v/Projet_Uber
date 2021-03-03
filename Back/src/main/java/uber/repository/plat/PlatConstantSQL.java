@@ -10,6 +10,8 @@ public class PlatConstantSQL
   /*---------- Table ---------*/
   public static final String TABLE_NAME = "t_plat_plt";
 
+  public static final String PLAT_PANIER_ASSOCIATION = "t_panier_plat_tpp";
+
   /*---------- Colonne ---------*/
   public static final String ID_COLUMN_NAME = "plt_id";
 

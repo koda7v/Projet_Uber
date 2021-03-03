@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import uber.repository.panier.PanierConstantSQL;
@@ -26,7 +27,8 @@ public class Panier
   @Column(PanierConstantSQL.FK_ID_USER_COLUMN_NAME)
   protected Long idUser;
 
-  protected List<Plat> plats;
+  @MappedCollection(keyColumn = PanierConstantSQL.ID_COLUMN_NAME, idColumn = PanierConstantSQL.ID_COLUMN_NAME)
+  protected List<PlatRef> platsRef;
 
   public Panier(Long id, Long total, Date date, Long idUser)
   {
@@ -35,14 +37,22 @@ public class Panier
     this.date = date;
     this.idUser = idUser;
 
-    this.plats = new ArrayList<>();
+    this.platsRef = new ArrayList<>();
   }
 
   /*---------- Plats ---------*/
 
+//  public void addPlat(List<Plat> plats)
+//  {
+//    for (Plat plat : plats)
+//    {
+//      this.addPlatRef(plat);
+//    }
+//  }
+
   public void addPlat(Plat plat)
   {
-    this.plats.add(plat);
+    this.platsRef.add(new PlatRef(plat.getId()));
   }
 
   /*---------- Getters and Setters ---------*/
@@ -87,14 +97,14 @@ public class Panier
     this.idUser = idUser;
   }
 
-  public List<Plat> getPlats()
+  public List<PlatRef> getPlatsRef()
   {
-    return plats;
+    return platsRef;
   }
 
-  public void setPlats(List<Plat> plats)
+  public void setPlatsRef(List<PlatRef> plats)
   {
-    this.plats = plats;
+    this.platsRef = plats;
   }
 
 }
