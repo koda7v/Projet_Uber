@@ -1,0 +1,18 @@
+::ng-deep .panier_plat {
+    display: flex;
+    height: 300px !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .border {
+        border: 5px solid green;
+        background-color: aliceblue;
+        display: inherit;
+        justify-content: inherit;
+    }
+  }
+
+
+  
+  
