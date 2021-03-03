@@ -22,6 +22,11 @@ const routes: Routes = [
       import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule)
   },
   {
+    path:'paniers',
+    loadChildren: () =>
+      import('./core/panier/panier.module').then((m) => m.PanierModule)
+  },
+  {
     path: 'plats/:id',
     loadChildren: () =>
       import('./core/plat/plat.module').then((m) => m.PlatModule)

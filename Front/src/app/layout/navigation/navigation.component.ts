@@ -34,7 +34,8 @@ export class NavigationComponent {
     const user = this.tokenStorageService.getUser();
     if (user === null || user.roles.includes('ROLE_USER')){
       this.items = [
-        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'}
+        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'},
+        { title: 'Voir les paniers', route: '/restaurants', icon: 'restaurant'}
       ];
     }else if (user.roles.includes('ROLE_ADMIN')){
       this.items = [
