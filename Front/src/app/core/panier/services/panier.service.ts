@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Panier } from 'src/app/core/panier/interfaces/panier.vo';
+import { Plat } from '../../plat/interfaces/plat.vo';
  
 const baseUrl = 'http://localhost:8081/panier';
 
@@ -32,8 +33,8 @@ export class PanierService {
    * Récupère les plats d'un panier
    * @param idUser 
    */
-  findPlatFromPanier(idUser: number): Observable<Panier[]> {
-    return this.http.get<Panier[]>(`${baseUrl}/plats/${idUser}`);
+  findPlatFromPanier(idUser: number): Observable<Plat[]> {
+    return this.http.get<Plat[]>(`${baseUrl}/plats/${idUser}`);
   }
 
   /**

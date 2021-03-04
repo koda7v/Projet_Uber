@@ -1,5 +1,12 @@
 <div class="panier_plat">
     <div class="border">
-        <h3>Ma liste de panier</h3>
+        <div class="plats" *ngFor="let plat of plats" [colspan]="1" [rowspan]="1">
+            <h3>{{plat.nom}}</h3>
+            <h3>Prix : {{plat.prix}} €</h3>
+        </div>
+        <div class="prix">
+            <h3> Le prix de votre commande est de : {{ getPrixTotal() }} €</h3>
+        </div>
+
     </div>
 </div>
