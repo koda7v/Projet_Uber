@@ -1,0 +1,60 @@
+<app-page-title title="Ajouter un restaurant" breadcrumb="true"></app-page-title>
+
+<div class="page-content">
+
+    <mat-card class="form-card">
+        <form [formGroup]="addForm" (submit)="saveRestaurant()">
+            <mat-card-content>
+
+                <!-- Nom -->
+                <mat-form-field>
+                    <mat-label>Nom du restaurant</mat-label>
+                    <input type="text" matInput formControlName="nom" oninput="this.value = this.value.toUpperCase()" />
+                    <mat-error *ngIf="addForm.controls.nom.hasError('required')">
+                        Le champ nom est requis.
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Description -->
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="description" />
+                    <mat-error *ngIf="addForm.controls.description.hasError('required')">
+                        Le champ description est requis.
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Photo</mat-label>
+                    <ngx-mat-file-input matInput formControlName="photo" placeholder="Choissiser votre photo"
+                        (change)="handleUpload($event)">
+                    </ngx-mat-file-input>
+                    <mat-icon matSuffix>folder</mat-icon>
+                    <mat-error *ngIf="addForm.controls.photo.hasError('required')">
+                        Choissiser une photo
+                    </mat-error>
+                    <mat-error *ngIf="addForm.controls.photo.hasError('maxContentSize')">
+                        The total size must not exceed 40ko
+                    </mat-error>
+                </mat-form-field>
+                <!-- Photo 
+
+                <mat-form-field>
+                    <mat-label>Photo</mat-label>
+                    <input type="file" #fileupload matInput formControlName="photo"
+                        (change)="getBase64(fileupload.files)" />
+                    <mat-error *ngIf="addForm.controls.photo.hasError('required')">
+                        Le champ photo est requis.
+                    </mat-error>
+                </mat-form-field>-->
+
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-flat-button color="primary" type="submit">Ajouter</button>
+                <button mat-flat-button routerLink="/gestionRestaurant">Annuler</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+
+</div>

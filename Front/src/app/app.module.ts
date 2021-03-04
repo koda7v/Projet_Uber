@@ -22,6 +22,7 @@ import { ProfileComponent } from './jwt/profile/profile.component';
 import { BoardAdminComponent } from './jwt/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './jwt/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './jwt/board-user/board-user.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { authInterceptorProviders } from './jwt/_helpers/auth.interceptor';
 
@@ -44,7 +45,8 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     HttpClientModule,
     AppLayoutModule,
-    FormsModule
+    FormsModule,
+    MaterialFileInputModule
   ],
   providers: [
     authInterceptorProviders,
