@@ -19,7 +19,7 @@ export const panierRouteList: Routes = [
 ];
 
 @NgModule({
-  declarations: [ListePanierPlatsComponent],
+  declarations: [],
   providers: [PanierService],
   imports: [
     RouterModule.forChild(panierRouteList),

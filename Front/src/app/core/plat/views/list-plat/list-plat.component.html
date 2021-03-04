@@ -1,33 +1,48 @@
-<mat-grid-list cols="4" rowHeight="400px">
-    <mat-grid-tile *ngFor="let plat of plats" [colspan]="1" [rowspan]="1">
-        <mat-card class="example-card">
-            <mat-card-header>
-                <img id="myimage" [src]="getImage(plat.photo.photo)" />
-                <mat-card-title>{{plat.nom}}</mat-card-title>
-                <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-            </mat-card-header>
-            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-            <mat-card-content>
-                <p>
-                    {{plat.description}}
-                </p>
-            </mat-card-content>
-            <!-- <mat-card-actions> 
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions> -->
-            <mat-card-footer>
-                <div>{{plat.prix}}</div>
-                <div *ngIf="show; else notShow">
-                    <button mat-button color="primary">Ajouter au panier</button>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9">
+            <div class="plats">
+                <div class="plat" *ngFor="let plat of plats" [colspan]="1" [rowspan]="1">
+                    <div class="infos">
+                        <div class="image">
+                            <img id="myimage" [src]="getImage(plat.photo.photo)" />
+                        </div>
 
-                <ng-template #notShow>
-                </ng-template>
-            </mat-card-footer>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+                        <div class="nom">
+                            {{plat.nom}}
+                        </div>
+
+                        <div class="description">
+                            {{plat.description}}
+                        </div>
+
+                        <div class="prix">
+                            <p>Prix du menu : {{plat.prix}} €</p>
+                        </div>
+                    </div>
+
+                    <div class="ajouter" *ngIf="show; else notShow">
+                        <!-- <mat-card-actions> 
+                                    <button mat-button>LIKE</button>
+                                    <button mat-button>SHARE</button>
+                                </mat-card-actions> -->
+                        <button mat-button color="primary">Ajouter au panier</button>
+                    </div>
+                    <ng-template #notShow>
+                    </ng-template>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="panier">
+                <app-liste-panier-plats></app-liste-panier-plats>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 

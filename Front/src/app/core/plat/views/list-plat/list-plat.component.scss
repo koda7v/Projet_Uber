@@ -1,7 +1,48 @@
- .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+.plats {
+    display: flex;
+    justify-content: space-between;
+
+    .plat {
+
+        border: 5px solid green;
+        margin: 5px;
+
+        .image {
+
+            img {
+                width: 400px;
+                height: 300px;
+            }
+
+            border-bottom: 5px solid green;
+        }
+
+        .description {
+            margin: 15px;
+            word-break: break-word;
+            background-color: darkseagreen;
+        }
+
+        .nom {
+            margin: 5px;
+            text-align: center;
+            background-color: aliceblue;
+        }
+
+        .prix {
+            margin: 15px;
+        }
+
+        .ajouter {
+            margin: 15px;
+        }
+    }
+}
+
+.panier {
+    margin: 5px;
+    height: auto;
+}
 
   
 
