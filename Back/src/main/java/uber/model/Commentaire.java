@@ -3,69 +3,82 @@ package uber.model;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
+import uber.repository.commentaire.CommentaireConstantSQL;
+
+@Table(CommentaireConstantSQL.TABLE_NAME)
 public class Commentaire
 {
 
-	@Id
-	protected Long id;
-	
-	@NotEmpty
-	protected String text;
-	
-	@Id
-	protected Long idUser;
-	
-	@Id
-	protected Long idPlat;
-	
-	/**
-	 * 
-	 * @param id
-	 * @param text
-	 * @param idUser
-	 * @param idPlat
-	 */
-	public Commentaire(Long id, String text, Long idUser, Long idPlat) {
-		this.id = id;
-		this.text = text;
-		this.idUser = idUser;
-		this.idPlat = idPlat;
-	}
+  @Id
+  @Column(CommentaireConstantSQL.ID_COLUMN_NAME)
+  protected Long id;
 
-	public Long getId() {
-		return id;
-	}
+  @NotEmpty
+  @Column(CommentaireConstantSQL.TEXTE_COLUMN_NAME)
+  protected String text;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(CommentaireConstantSQL.FK_ID_USER_COLUMN_NAME)
+  protected Long idUser;
 
-	public String getText() {
-		return text;
-	}
+  @Column(CommentaireConstantSQL.FK_ID_RESTO_COLUMN_NAME)
+  protected Long idResto;
 
-	public void setText(String text) {
-		this.text = text;
-	}
+  /**
+   * 
+   * @param id
+   * @param text
+   * @param idUser
+   * @param idPlat
+   */
+  public Commentaire(Long id, String text, Long idUser, Long idResto)
+  {
+    this.id = id;
+    this.text = text;
+    this.idUser = idUser;
+    this.idResto = idResto;
+  }
 
-	public Long getIdUser() {
-		return idUser;
-	}
+  public Long getId()
+  {
+    return id;
+  }
 
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
-	}
+  public void setId(Long id)
+  {
+    this.id = id;
+  }
 
-	public Long getIdPlat() {
-		return idPlat;
-	}
+  public String getText()
+  {
+    return text;
+  }
 
-	public void setIdPlat(Long idPlat) {
-		this.idPlat = idPlat;
-	}
-	
-	
-	
-	
+  public void setText(String text)
+  {
+    this.text = text;
+  }
+
+  public Long getIdUser()
+  {
+    return idUser;
+  }
+
+  public void setIdUser(Long idUser)
+  {
+    this.idUser = idUser;
+  }
+
+  public Long getIdResto()
+  {
+    return idResto;
+  }
+
+  public void setIResto(Long idResto)
+  {
+    this.idResto = idResto;
+  }
+
 }
