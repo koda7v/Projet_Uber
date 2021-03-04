@@ -32,8 +32,15 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + PanierConstantSQL.TABLE_NAME + " WHERE " + UserConstantsSQL.ID_COLUMN_NAME + " = :idUser)")
   List<PlatRef> findPlatFromPanier(@Param("idUser") Long idUser);
 
+  /**
+   * Selectionne le dernier panier actif de l'utilisateur (pour l'instant l'id le plus grand est l'actif)
+   * 
+   * @param idUser
+   * @return
+   */
   @Query("SELECT " + PanierConstantSQL.TABLE_NAME + ".*" + " FROM " + PanierConstantSQL.TABLE_NAME + " WHERE "
-      + PanierConstantSQL.TABLE_NAME + "." + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser")
+      + PanierConstantSQL.TABLE_NAME + "." + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser ORDER BY "
+      + PanierConstantSQL.ID_COLUMN_NAME + " DESC LIMIT 1")
   Panier findUserPanier(@Param("idUser") Long idUser);
 
   /**
