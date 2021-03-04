@@ -2,6 +2,7 @@ package uber.repository.panier;
 
 import java.util.List;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,7 @@ import uber.repository.user.UserConstantsSQL;
 @Repository
 public interface PanierRepository extends PagingAndSortingRepository<Panier, Long>
 {
+
   /**
    * Récupère les paniers correspondant à l'id d'un user.
    * 
@@ -30,8 +32,8 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + PanierConstantSQL.TABLE_NAME + " WHERE " + UserConstantsSQL.ID_COLUMN_NAME + " = :idUser)")
   List<PlatRef> findPlatFromPanier(@Param("idUser") Long idUser);
 
-  @Query("SELECT  " + PanierConstantSQL.TABLE_NAME + ".*" + " FROM " + PanierConstantSQL.TABLE_NAME
-      + " WHERE use_id = :idUser)")
+  @Query("SELECT " + PanierConstantSQL.TABLE_NAME + ".*" + " FROM " + PanierConstantSQL.TABLE_NAME + " WHERE "
+      + PanierConstantSQL.TABLE_NAME + "." + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser")
   Panier findUserPanier(@Param("idUser") Long idUser);
 
   /**
@@ -40,10 +42,13 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
    * @param idPan
    * @param idPlat
    */
-  @Query("INSERT INTO " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " ( " + PanierConstantSQL.ID_COLUMN_NAME + " , "
-      + PlatConstantSQL.ID_COLUMN_NAME + " )  VALUES ( :idPan, " + " (SELECT " + PlatConstantSQL.ID_COLUMN_NAME
-      + " FROM " + PlatConstantSQL.TABLE_NAME + " WHERE " + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat ))")
 
+  @Modifying
+  @Query("INSERT INTO " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " ( " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION
+      + "." + PanierConstantSQL.FK_ID__COLUMN_NAME + ", " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "."
+      + PlatConstantSQL.ID_COLUMN_NAME + " )  VALUES ( :idPan, (SELECT " + PlatConstantSQL.TABLE_NAME + "."
+      + PlatConstantSQL.ID_COLUMN_NAME + " FROM " + PlatConstantSQL.TABLE_NAME + " WHERE " + PlatConstantSQL.TABLE_NAME
+      + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat ))")
   void addPlatToUserPanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
 
 }

@@ -7,6 +7,9 @@ import { Restaurant } from 'src/app/core/restaurant/interfaces/restaurant.vo';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TokenStorageService } from '../../../../jwt/_services/token-storage.service';
+import { PanierService } from 'src/app/core/panier/services/panier.service';
+import { Panier } from 'src/app/core/panier/interfaces/panier.vo';
+
 
 @Component({
   selector: 'app-list-plat',
@@ -18,18 +21,23 @@ export class ListPlatComponent implements OnInit {
   breadcrumb = false;
   plats: Array<Plat>;
   show: boolean;
+  panier: Panier;
+  currentUser: any;
 
   constructor(
     private platService: PlatService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private panierService: PanierService,
+    private token: TokenStorageService
   ) {
     this.show = false;
    }
 
   ngOnInit(): void {
     this.retrievePlats(Number(this.route.snapshot.paramMap.get('id')));
+    this.currentUser = this.token.getUser();
     this.getInformationConnexion();
   }
 
@@ -64,7 +72,17 @@ export class ListPlatComponent implements OnInit {
     }
   }
 
-
+  addPlatToPanier(idUser:number, idPlat:number): void {
+    this.panierService.addPlatToUserPanier(idUser, idPlat).subscribe(
+      (data: Panier) => {
+        this.panier = data;
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
+  }
 
 
 
