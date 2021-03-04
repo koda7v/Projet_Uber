@@ -21,8 +21,13 @@ public class RestaurantService
 
   public Restaurant findRestaurant(Long id)
   {
-    return restaurantRepository.findById(id)
+    Restaurant restaurant = restaurantRepository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Restaurant avec l'ID : " + id + " pas trouvé!"));
+    Long idPhoto = this.restaurantRepository.getIdPhoto(restaurant.getId());
+    Photo photo = this.photoService.findPhoto(idPhoto);
+    restaurant.setPhoto(photo);
+
+    return restaurant;
   }
 
   public List<Restaurant> findAllRestaurant()
@@ -35,6 +40,29 @@ public class RestaurantService
       currentRestaurant.setPhoto(photo);
     }
     return restaurants;
+  }
+
+  public Restaurant saveRestaurant(Restaurant restaurant)
+  {
+    Long id = this.restaurantRepository.count() + 1;
+    this.restaurantRepository.addRestaurant(id, restaurant.getNom(), restaurant.getDescription(),
+                                            restaurant.getPhoto().getId());
+    return restaurant;
+  }
+
+  public Restaurant updateRestaurant(Restaurant restaurant, Long id)
+  {
+    Long idPhoto = this.restaurantRepository.getIdPhoto(id);
+    this.restaurantRepository.updateRestaurant(id, restaurant.getNom(), restaurant.getDescription());
+    if (restaurant.getPhoto().getPhoto() == null)
+    {
+      this.photoService.updatePhoto(this.photoService.findPhoto(idPhoto), idPhoto);
+    }
+    else
+    {
+      this.photoService.updatePhoto(restaurant.getPhoto(), idPhoto);
+    }
+    return this.findRestaurant(id);
   }
 
 }

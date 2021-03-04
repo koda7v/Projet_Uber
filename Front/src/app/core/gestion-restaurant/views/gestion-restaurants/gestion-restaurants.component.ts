@@ -75,6 +75,7 @@ export class GestionRestaurantsComponent implements OnInit {
     this.restaurantService.getAll().subscribe(
       (data: Restaurant[]) => {
         this.dataSource = new MatTableDataSource(data);
+        console.log(data);
         this.initShow(data.length);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -115,6 +116,7 @@ export class GestionRestaurantsComponent implements OnInit {
   }
 
   getImage(image: string): any{
+    console.log(image);
     const objectURL = 'data:image/jpeg;base64,' + image;
     return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }

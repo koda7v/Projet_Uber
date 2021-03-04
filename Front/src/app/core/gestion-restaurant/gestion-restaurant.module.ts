@@ -43,14 +43,14 @@ export const restaurantRouteList: Routes = [
      data: {
        breadcrumb: 'Ajout'
      }
-   }
-  // {
-  //   path: 'editer/:id',
-  //   component: PersonneEditComponent,
-  //   data: {
-  //     breadcrumb: 'Editer'
-  //   }
-  // },
+   },
+  {
+    path: 'editer/:id',
+    component: RestaurantEditComponent,
+    data: {
+      breadcrumb: 'Editer'
+    }
+  },
   // {
   //   path: ':id',
   //   component: PersonneDetailsComponent,

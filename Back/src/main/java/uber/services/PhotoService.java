@@ -26,4 +26,16 @@ public class PhotoService
     return photoRepository.findAll();
   }
 
+  public Long savePhoto(Photo photo)
+  {
+    Long id = this.photoRepository.count() + 1;
+    this.photoRepository.addPhoto(id, photo.getName(), photo.getPhoto(), photo.getCommentaire());
+    return id;
+  }
+
+  public void updatePhoto(Photo photo, Long id)
+  {
+    this.photoRepository.updatePhoto(id, photo.getPhoto(), photo.getName(), photo.getCommentaire());
+  }
+
 }

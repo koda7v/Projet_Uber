@@ -55,7 +55,7 @@
                     <button mat-icon-button aria-label="Actions" [routerLink]="['/personnes', element.id]">
                         <mat-icon>assignment_ind</mat-icon>
                     </button>
-                    <button mat-icon-button aria-label=" Actions" [routerLink]="['/personnes/editer', element.id]">
+                    <button mat-icon-button aria-label=" Actions" [routerLink]="['editer', element.id]">
                         <mat-icon>create</mat-icon>
                     </button>
                     <button mat-icon-button aria-label="Actions">
@@ -65,7 +65,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
             <!-- Colonne aucune données trouvées. -->
             <tr class="mat-row" *matNoDataRow>

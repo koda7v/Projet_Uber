@@ -1,6 +1,6 @@
 export interface Photo {
     id?: number;
-    nom: string;
+    name: string;
     photo: string;
     commentaire: string;
 }

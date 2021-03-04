@@ -5,7 +5,6 @@ import { BreadcrumbService } from 'xng-breadcrumb';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { RestaurantService } from 'src/app/core/restaurant/services/restaurant.service';
-import { Photo } from 'src/app/core/photo/interfaces/photo.vo';
 
 import { FileValidator } from 'ngx-material-file-input';
 
@@ -15,10 +14,11 @@ import { FileValidator } from 'ngx-material-file-input';
   styleUrls: ['./restaurant-add.component.scss']
 })
 export class RestaurantAddComponent implements OnInit {
-  addForm: FormGroup;
-  myFile: Photo;
+  addFormRestaurant: FormGroup;
+  addFormPhoto: FormGroup;
+  data: string;
 
-  readonly maxSize = 40000;
+  readonly maxSize = 52000;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,25 +26,28 @@ export class RestaurantAddComponent implements OnInit {
     private restaurantService: RestaurantService,
     private router: Router,
     private snackBar: MatSnackBar,
-  ) { }
+  ) {  }
 
   ngOnInit(): void {
     this.initFormBuilder();
   }
 
   private initFormBuilder(): void {
-    this.addForm = this.formBuilder.group({
+    this.addFormRestaurant = this.formBuilder.group({
       nom: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
+    });
+    this.addFormPhoto = this.formBuilder.group({
+      name: new FormControl('', Validators.required),
       photo: new FormControl(undefined, [Validators.required, FileValidator.maxContentSize(this.maxSize)]),
+      commentaire: new FormControl('', Validators.required),
     });
   }
 
   saveRestaurant(): void {
-    console.log(this.myFile);
-    if (this.addForm.valid) {
+    if (this.addFormPhoto.valid && this.addFormRestaurant.valid) {
       let snackBarMessage = '';
-      this.restaurantService.create(this.addForm.value).subscribe(
+      this.restaurantService.create(this.addFormRestaurant.value, this.addFormPhoto.value, this.data).subscribe(
         (response) => {
           console.log(response);
           snackBarMessage = 'Le restaurant a bien été ajouté';
@@ -64,27 +67,15 @@ export class RestaurantAddComponent implements OnInit {
     }
   }
 
-  getBase64(files: any): void {
-    const me = this;
-    this.myFile.nom = files[0].name;
-    this.myFile.commentaire = files[0].name;
-    const file = files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    // tslint:disable-next-line:only-arrow-functions
-    reader.onload = function(): void {
-      me.myFile.photo = reader.result as string;
-      console.log(reader.result);
-    };
- }
 
  handleUpload(event): void {
-  const file = event.target.files[0];
-  console.log(file.name);
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = () => {
-      console.log(reader.result);
+    const me = this;
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const d = reader.result as string;
+      me.data = d.replace(/^data:image\/[a-z]+;base64,/, '');
   };
 }
 

@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Restaurant } from 'src/app/core/restaurant/interfaces/restaurant.vo';
+import { Photo } from 'src/app/core/photo/interfaces/photo.vo';
+
 
 const baseUrl = 'http://localhost:8081/restaurant';
 
@@ -27,9 +29,23 @@ export class RestaurantService {
     return this.http.get<Restaurant>(`${baseUrl}/${id}`);
   }
 
-
-  create(restaurant: Restaurant): Observable<Restaurant> {
-    console.log(restaurant);
+  create(restaurant: Restaurant, photo: Photo, data: string ): Observable<Restaurant> {
+    photo.photo = data;
+    restaurant.photo = photo;
     return this.http.post<Restaurant>(baseUrl, restaurant);
   }
+
+  /**
+   * Mise à jour d'un objet Restaurant
+   * @param data Restaurant mise à jour.
+   */
+  update(id: number, restaurant: Restaurant, photo: Photo, data: string): Observable<Restaurant> {
+    photo.photo = data;
+    restaurant.photo = photo;
+    const params = new HttpParams().set('id', String(id));
+    const options = {params};
+
+    return this.http.put<Restaurant>(baseUrl, restaurant, options);
+  }
+
 }
