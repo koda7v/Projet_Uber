@@ -31,4 +31,10 @@ public class CommentaireService
     // TODO Auto-generated method stub
     return commentaireRepository.findRestoCommentaires(id);
   }
+
+  public void deleteCommentaire(Long id)
+  {
+    this.commentaireRepository.deleteById(id);
+
+  }
 }

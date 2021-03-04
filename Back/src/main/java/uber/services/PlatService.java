@@ -46,7 +46,8 @@ public class PlatService
   public void deletePlat(Long id)
   {
     Plat plat = this.findPlat(id);
-    photoService.deletePhoto(plat.getPhoto().getId());
+    this.photoService.deletePhoto(plat.getPhoto().getId());
+    this.platRepository.deleteById(id);
   }
 
 }

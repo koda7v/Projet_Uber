@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,4 +62,9 @@ public class PlatController
     return this.platService.findAllPlatsWithRestaurantId(idRestaurant);
   }
 
+  @DeleteMapping("/delete")
+  public void deletePlat(Long id)
+  {
+    this.platService.deletePlat(id);
+  }
 }

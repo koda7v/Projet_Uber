@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uber.exceptions.customs.ResourceNotFoundException;
+import uber.model.Commentaire;
 import uber.model.Photo;
 import uber.model.Plat;
 import uber.model.Restaurant;
@@ -24,6 +25,9 @@ public class RestaurantService
 
   @Autowired
   protected PlatService platService;
+
+  @Autowired
+  protected CommentaireService commentaireService;
 
   public Restaurant findRestaurant(Long id)
   {
@@ -74,9 +78,17 @@ public class RestaurantService
   public void deleteRestaurant(@Valid Long idResto)
   {
     Restaurant resto = this.findRestaurant(idResto);
+    List<Commentaire> coms = this.commentaireService.findRestoCommentaires(idResto);
+
+    for (Commentaire com : coms)
+    {
+      this.commentaireService.deleteCommentaire(com.getId());
+    }
+
     for (Plat plat : resto.getPlats())
     {
       this.platService.deletePlat(plat.getId());
+
     }
 
     restaurantRepository.deleteRestaurant(idResto);
