@@ -6,7 +6,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { PlatService } from 'src/app/core/plat/services/plat.service';
 import { ListPlatComponent } from './views/list-plat/list-plat.component';
-import { ListePanierPlatsComponent } from '../panier/component/liste-panier-plats/liste-panier-plats.component';
 
 export const platRouteList: Routes = [
   {
@@ -19,7 +18,7 @@ export const platRouteList: Routes = [
 ];
 
 @NgModule({
-  declarations: [ListPlatComponent, ListePanierPlatsComponent],
+  declarations: [ListPlatComponent],
   providers: [PlatService],
   imports: [
     RouterModule.forChild(platRouteList),

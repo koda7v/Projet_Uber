@@ -35,4 +35,10 @@ export class PanierService {
   findPlatFromPanier(idUser: number): Observable<Panier[]> {
     return this.http.get<Panier[]>(`${baseUrl}/plats/${idUser}`);
   }
+
+  findUserPanier(id: number): Observable<Panier> {
+    return this.http.get<Panier>(`${baseUrl}/user/${id}`);
+  }
+
+  addPlatToUserPanier()
 }

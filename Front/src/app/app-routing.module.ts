@@ -22,7 +22,7 @@ const routes: Routes = [
       import('./core/restaurant/restaurant.module').then((m) => m.RestaurantModule)
   },
   {
-    path:'paniers',
+    path:'paniers/:idUser/:idPlat',
     loadChildren: () =>
       import('./core/panier/panier.module').then((m) => m.PanierModule)
   },

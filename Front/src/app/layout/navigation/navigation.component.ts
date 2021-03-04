@@ -35,7 +35,7 @@ export class NavigationComponent {
     if (user === null || user.roles.includes('ROLE_USER')){
       this.items = [
         { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'},
-        { title: 'Voir les paniers', route: '/restaurants', icon: 'restaurant'}
+        { title: 'Historique de commande', route: '/paniers', icon: 'add_shopping_cart'}
       ];
     }else if (user.roles.includes('ROLE_ADMIN')){
       this.items = [
