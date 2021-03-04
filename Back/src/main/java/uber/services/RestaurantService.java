@@ -2,11 +2,14 @@ package uber.services;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uber.exceptions.customs.ResourceNotFoundException;
 import uber.model.Photo;
+import uber.model.Plat;
 import uber.model.Restaurant;
 import uber.repository.restaurant.RestaurantRepository;
 
@@ -18,6 +21,9 @@ public class RestaurantService
 
   @Autowired
   protected PhotoService photoService;
+
+  @Autowired
+  protected PlatService platService;
 
   public Restaurant findRestaurant(Long id)
   {
@@ -63,6 +69,18 @@ public class RestaurantService
       this.photoService.updatePhoto(restaurant.getPhoto(), idPhoto);
     }
     return this.findRestaurant(id);
+  }
+
+  public void deleteRestaurant(@Valid Long idResto)
+  {
+    Restaurant resto = this.findRestaurant(idResto);
+    for (Plat plat : resto.getPlats())
+    {
+      this.platService.deletePlat(plat.getId());
+    }
+
+    restaurantRepository.deleteRestaurant(idResto);
+
   }
 
 }

@@ -70,4 +70,10 @@ public class RestaurantController
     return this.restaurantService.updateRestaurant(restaurant, id);
   }
 
+  @PostMapping("delete")
+  public void deleteRestaurant(@Valid @RequestParam Long idResto)
+  {
+    this.restaurantService.deleteRestaurant(idResto);
+  }
+
 }

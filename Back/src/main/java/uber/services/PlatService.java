@@ -43,4 +43,10 @@ public class PlatService
     return plats;
   }
 
+  public void deletePlat(Long id)
+  {
+    Plat plat = this.findPlat(id);
+    photoService.deletePhoto(plat.getPhoto().getId());
+  }
+
 }

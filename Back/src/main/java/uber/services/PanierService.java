@@ -3,6 +3,8 @@ package uber.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +60,14 @@ public class PanierService
     System.out.println("idPan : " + idPan);
     System.out.println("idPlat : " + idPlat);
     panierRepository.addPlatToUserPanier(idPan, idPlat);
+  }
+
+  public void deletePlatFromActivePanier(@Valid Long idUser, @Valid Long idPlat)
+  {
+    Panier p = panierRepository.findUserPanier(idUser);
+    Long idPan = p.getId();
+    panierRepository.deletePlatFromActivePanier(idPan, idPlat);
+
   }
 
 }

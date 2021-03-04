@@ -78,4 +78,10 @@ public class PanierController
     this.panierService.addPlatToUserPanier(idUser, idPlat);
   }
 
+  @PostMapping("delete")
+  public void deletePlatFromActivePanier(@Valid @RequestParam Long idUser, @Valid @RequestParam Long idPlat)
+  {
+    this.panierService.deletePlatFromActivePanier(idUser, idPlat);
+  }
+
 }

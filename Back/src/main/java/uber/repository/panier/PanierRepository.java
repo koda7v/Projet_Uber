@@ -7,6 +7,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import uber.model.Panier;
 import uber.model.PlatRef;
@@ -52,7 +53,7 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
 
   @Modifying
   @Query("INSERT INTO " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " ( " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION
-      + "." + PanierConstantSQL.FK_ID__COLUMN_NAME + ", " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "."
+      + "." + PanierConstantSQL.FK_ID_PAN_COLUMN_NAME + ", " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "."
       + PlatConstantSQL.ID_COLUMN_NAME + " )  VALUES ( :idPan, (SELECT " + PlatConstantSQL.TABLE_NAME + "."
       + PlatConstantSQL.ID_COLUMN_NAME + " FROM " + PlatConstantSQL.TABLE_NAME + " WHERE " + PlatConstantSQL.TABLE_NAME
       + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat ))")
@@ -63,4 +64,11 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + PanierConstantSQL.TOTAL_COLUMN_NAME + ", " + PanierConstantSQL.TABLE_NAME + "."
       + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " )  VALUES ( 0, :idUser)")
   void addNewPanierForUser(@Param("idUser") Long idUser);
+
+  @Modifying
+  @Transactional
+  @Query("DELETE FROM " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "WHERE "
+      + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PanierConstantSQL.FK_ID_PAN_COLUMN_NAME + " = :idPan AND "
+      + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat")
+  void deletePlatFromActivePanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
 }

@@ -38,4 +38,10 @@ public class PhotoService
     this.photoRepository.updatePhoto(id, photo.getPhoto(), photo.getName(), photo.getCommentaire());
   }
 
+  public void deletePhoto(Long id)
+  {
+    // this.photoRepository
+
+  }
+
 }

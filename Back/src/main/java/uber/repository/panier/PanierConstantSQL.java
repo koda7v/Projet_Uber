@@ -21,7 +21,7 @@ public class PanierConstantSQL
 
   public static final String FK_ID_USER_COLUMN_NAME = "use_id";
 
-  public static final String FK_ID__COLUMN_NAME = "pan_id";
+  public static final String FK_ID_PAN_COLUMN_NAME = "pan_id";
 
   /*---------- Table de jointure ---------*/
 
