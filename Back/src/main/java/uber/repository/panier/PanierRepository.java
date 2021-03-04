@@ -51,4 +51,9 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat ))")
   void addPlatToUserPanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
 
+  @Modifying
+  @Query("INSERT INTO " + PanierConstantSQL.TABLE_NAME + " ( " + PanierConstantSQL.TABLE_NAME + "."
+      + PanierConstantSQL.TOTAL_COLUMN_NAME + ", " + PanierConstantSQL.TABLE_NAME + "."
+      + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " )  VALUES ( 0, :idUser)")
+  void addNewPanierForUser(@Param("idUser") Long idUser);
 }

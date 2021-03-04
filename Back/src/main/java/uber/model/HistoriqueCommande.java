@@ -25,11 +25,15 @@ public class HistoriqueCommande
   @Column(HistoriqueConstantSQL.FK_ID_USER_COLUMN_NAME)
   protected Long idUser;
 
-  public HistoriqueCommande(Long id, boolean paye, Long idUser)
+  @Column(HistoriqueConstantSQL.FK_ID_PANIER_COLUMN_NAME)
+  protected Long idPan;
+
+  public HistoriqueCommande(Long id, boolean paye, Long idUser, Long idPan)
   {
     this.id = id;
     this.paye = paye;
     this.idUser = idUser;
+    this.idPan = idPan;
   }
 
   public Long getId()
@@ -60,6 +64,16 @@ public class HistoriqueCommande
   public void setIdUser(Long idUser)
   {
     this.idUser = idUser;
+  }
+
+  public Long getIdPan()
+  {
+    return idPan;
+  }
+
+  public void setIdPan(Long idPan)
+  {
+    this.idPan = idPan;
   }
 
 }

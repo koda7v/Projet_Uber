@@ -18,4 +18,6 @@ public class HistoriqueConstantSQL
   /*---------- Clés étrangères ---------*/
 
   public static final String FK_ID_USER_COLUMN_NAME = "use_id";
+
+  public static final String FK_ID_PANIER_COLUMN_NAME = "pan_id";
 }

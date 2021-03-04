@@ -2,6 +2,8 @@ package uber.services;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,11 @@ public class HistoriqueService
   {
     System.out.println("ouuuui");
     return historiqueRepository.findAll();
+  }
+
+  public void addPanierToHistorique(@Valid Long idPan, @Valid Long idUser)
+  {
+    historiqueRepository.addPanierToHistorique(idPan, idUser);
+
   }
 }
