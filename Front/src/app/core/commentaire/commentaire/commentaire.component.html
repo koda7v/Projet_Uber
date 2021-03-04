@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    
+
+    <div class="commentaires" *ngFor="let commentaire of commentaires">
+        <div class=commentaire style="background-color: blue;">
+            <p>{{commentaire.text}}</p>
+        </div>
+    </div>
+    <div class="formCommentaire">
+        <mat-form-field>
+            <mat-label>Ajouter un commentaire...</mat-label>
+                <textarea rows="5" matInput></textarea>
+          </mat-form-field>
+    </div>
+</div>
