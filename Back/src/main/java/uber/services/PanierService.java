@@ -46,4 +46,16 @@ public class PanierService
     return plats;
   }
 
+  public Panier findUserPanier(Long id)
+  {
+    return panierRepository.findUserPanier(id);
+  }
+
+  public void addPlatToUserPanier(Long idUser, Long idPlat)
+  {
+    Panier p = panierRepository.findUserPanier(idUser);
+    Long idPan = p.getId();
+    panierRepository.addPlatToUserPanier(idPan, idPlat);
+  }
+
 }

@@ -29,4 +29,21 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + PanierConstantSQL.ID_COLUMN_NAME + " = (SELECT " + PanierConstantSQL.ID_COLUMN_NAME + " FROM "
       + PanierConstantSQL.TABLE_NAME + " WHERE " + UserConstantsSQL.ID_COLUMN_NAME + " = :idUser)")
   List<PlatRef> findPlatFromPanier(@Param("idUser") Long idUser);
+
+  @Query("SELECT  " + PanierConstantSQL.TABLE_NAME + ".*" + " FROM " + PanierConstantSQL.TABLE_NAME
+      + " WHERE use_id = :idUser)")
+  Panier findUserPanier(@Param("idUser") Long idUser);
+
+  /**
+   * Utiliser findUserPanier pour passer l'idPan
+   * 
+   * @param idPan
+   * @param idPlat
+   */
+  @Query("INSERT INTO " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " ( " + PanierConstantSQL.ID_COLUMN_NAME + " , "
+      + PlatConstantSQL.ID_COLUMN_NAME + " )  VALUES ( :idPan, " + " (SELECT " + PlatConstantSQL.ID_COLUMN_NAME
+      + " FROM " + PlatConstantSQL.TABLE_NAME + " WHERE " + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat ))")
+
+  void addPlatToUserPanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
+
 }

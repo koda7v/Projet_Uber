@@ -55,4 +55,24 @@ public class PanierController
     return this.panierService.findPlatFromPanier(id);
   }
 
+  /**
+   * 
+   * @param id
+   *          l'id d'un user
+   * @return
+   */
+  @GetMapping("user/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Panier findUserPanier(@PathVariable Long id)
+  {
+    return this.panierService.findUserPanier(id);
+  }
+
+  @GetMapping("addPlat/{idUser}/{idPlat}")
+  @ResponseStatus(HttpStatus.OK)
+  public void addPlatToUserPanier(@PathVariable Long idUser, @PathVariable Long idPlat)
+  {
+    this.panierService.addPlatToUserPanier(idUser, idPlat);
+  }
+
 }
