@@ -25,4 +25,10 @@ public class CommentaireService
   {
     return commentaireRepository.findCommentaires();
   }
+
+  public List<Commentaire> findRestoCommentaires(Long id)
+  {
+    // TODO Auto-generated method stub
+    return commentaireRepository.findRestoCommentaires(id);
+  }
 }

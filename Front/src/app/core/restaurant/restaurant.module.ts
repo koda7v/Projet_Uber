@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RestaurantService } from 'src/app/core/restaurant/services/restaurant.service';
 import { ListRestaurantComponent } from 'src/app/core/restaurant/views/list-restaurant/list-restaurant.component';
 
+
 export const restaurantRouteList: Routes = [
   {
     path: '',

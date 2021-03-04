@@ -46,4 +46,11 @@ public class CommentaireController
   {
     return this.commentaireService.findAllCommentaire();
   }
+
+  @GetMapping("restaurant/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Commentaire> findRestoCommentaires(@PathVariable Long id)
+  {
+    return this.commentaireService.findRestoCommentaires(id);
+  }
 }
