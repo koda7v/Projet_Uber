@@ -72,4 +72,10 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
       + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PanierConstantSQL.FK_ID_PAN_COLUMN_NAME + " = :idPan AND "
       + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat LIMIT 1")
   void deletePlatFromActivePanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
+
+  @Modifying
+  @Query("UPDATE  " + PanierConstantSQL.TABLE_NAME + " SET " + PanierConstantSQL.TOTAL_COLUMN_NAME + " = :total WHERE "
+      + PanierConstantSQL.ID_COLUMN_NAME + " = :idPan")
+
+  void updatePanierTotal(@Param("idPan") Long idPan, @Param("total") double total);
 }

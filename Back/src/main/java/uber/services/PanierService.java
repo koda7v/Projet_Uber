@@ -74,4 +74,11 @@ public class PanierService
 
   }
 
+  public void updatePanierTotal(@Valid Long idUser, double total)
+  {
+    Panier p = panierRepository.findUserPanier(idUser);
+    Long idPan = p.getId();
+    this.panierRepository.updatePanierTotal(idPan, total);
+  }
+
 }
