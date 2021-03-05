@@ -6,7 +6,7 @@
                     <div class="paniers" *ngFor="let panier of paniers" [colspan]="1" [rowspan]="1">
                         <div class="infos">
                             <h3>Prix : {{panier.total}} €</h3>
-                            <h3>Date de payement {{panier.date}} </h3>
+                            <h3>Date de payement : {{panier.date | date: formatsDateTest}} </h3>
                         </div>
                     </div>
                 </div>

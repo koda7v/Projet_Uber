@@ -14,21 +14,21 @@ import { ActivatedRoute } from '@angular/router';
 export class HistoriqueCommandeComponent implements OnInit {
 
   historiqueCommande: HistoriqueCommande;
-  paniers : Array<Panier>;
+  paniers: Array<Panier>;
   currentUser: any;
 
-  constructor(private historiqueCommandeService: HistoriqueCommandeService,  private route: ActivatedRoute, private token: TokenStorageService) { 
-    this.paniers = Array<Panier>()
-  }
+  formatsDateTest = 'dd/MM/yyyy';
 
-  
+  constructor(
+    private historiqueCommandeService: HistoriqueCommandeService,  private route: ActivatedRoute, private token: TokenStorageService
+    ) { this.paniers = Array<Panier>(); }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    this.retrievePaniersFromHistorique(this.currentUser.id)
+    this.retrievePaniersFromHistorique(this.currentUser.id);
   }
 
-      /**
+  /**
    * Récupération de l'historique
    */
   retrieveHistorique(id: number): void{
@@ -44,7 +44,7 @@ export class HistoriqueCommandeComponent implements OnInit {
   }
 
 
-    /**
+  /**
    * Récupération les paniers dans l'historique
    */
   retrievePaniersFromHistorique(idPanier: number): void{
