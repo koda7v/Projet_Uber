@@ -28,7 +28,7 @@ export class PlatService {
   }
 
   /**
-   * Récupération des Habilitations liées à une Personne.
+   * Récupération des plats liées à un restaurant.
    * @param idPersonne ID de la Personne.
    */
   findPlatsWithRestaurantId(idRestaurant: number): Observable<Plat[]> {
