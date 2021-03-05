@@ -1,15 +1,34 @@
 <div class="container-fluid">
-    
-
-    <div class="commentaires" *ngFor="let commentaire of commentaires">
-        <div class=commentaire style="background-color: blue;">
-            <p>{{commentaire.text}}</p>
+    <h3>Commentaires sur le restaurant</h3>
+    <div class="container-fluid">
+        <div class="commentaires" *ngFor="let commentaire of commentaires">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>{{ commentaire.user }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{commentaire.text}}</p>
+                </mat-card-content>
+            </mat-card>
+            <br>
         </div>
     </div>
-    <div class="formCommentaire">
-        <mat-form-field>
-            <mat-label>Ajouter un commentaire...</mat-label>
-                <textarea rows="5" matInput></textarea>
-          </mat-form-field>
-    </div>
+    <form [formGroup]="addFormCommentaire">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>Ajouter un commentaire...</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <textarea rows="5" (ngModelChange)="onModelChange($event)" matInput
+                    formControlName="commentaire"></textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)=add() mat-button>Ajouter</button>
+                <button mat-button>Annuler</button>
+                <div>
+                    {{numberOfCharacters}} / {{maxNumberOfCharacters}}
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
 </div>
