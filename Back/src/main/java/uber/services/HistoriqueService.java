@@ -23,6 +23,12 @@ public class HistoriqueService
         .orElseThrow(() -> new ResourceNotFoundException("Panier avec l'ID : " + id + " pas trouvé!"));
   }
 
+  public List<HistoriqueCommande> findHistoriquesFromUser(Long idUser)
+  {
+    return historiqueRepository.findHistoriquesFromUser(idUser);
+
+  }
+
   public List<HistoriqueCommande> findAllHistorique()
   {
     System.out.println("ouuuui");

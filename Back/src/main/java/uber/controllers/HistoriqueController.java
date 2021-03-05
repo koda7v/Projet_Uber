@@ -52,6 +52,14 @@ public class HistoriqueController
     return this.historiqueService.findAllHistorique();
   }
 
+  @GetMapping("/user/{idUser}")
+  @ResponseStatus(HttpStatus.OK)
+  public List<HistoriqueCommande> findHistoriquesFromUser(@PathVariable Long idUser)
+  {
+    return historiqueService.findHistoriquesFromUser(idUser);
+
+  }
+
   @PostMapping
   public void addPanierToHistorique(@Valid @RequestParam Long idPan, @Valid @RequestParam Long idUser)
   {
