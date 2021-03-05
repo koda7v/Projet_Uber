@@ -75,4 +75,12 @@ export class PanierService {
 
     return this.http.delete<Plat>(`${baseUrl}/delete`, option);
   }
+
+  updatePanierTotal(idUser:number, total:number) {
+    let parametres = new HttpParams();
+    parametres = parametres.append('idUser', idUser.toString())     
+    parametres = parametres.append('total', total.toString())  
+
+    return this.http.put<Panier>(`${baseUrl}/updateTotal`, parametres);
+  }
 }

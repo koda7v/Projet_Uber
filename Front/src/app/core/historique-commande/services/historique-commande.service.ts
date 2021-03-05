@@ -39,6 +39,10 @@ export class HistoriqueCommandeService {
 
     return this.http.post<Panier>(`${baseUrl}`, parametres);
   }
+
+  retrievePaniersFromUsers(idUser:number) {
+      return this.http.get<Panier[]>(`${baseUrl}/paniers/${idUser}`);
+  }
 }
 
 

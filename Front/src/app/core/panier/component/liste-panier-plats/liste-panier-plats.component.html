@@ -19,8 +19,10 @@
         </div>
         <div class="prix col-lg-2 col-md-3 col-8">
             <h3> Le prix de votre commande est de : {{ getPrixTotal() }} €</h3>
-            <button color="#C6FF99" (click)="addPanierToHistorique(this.currentUser.id)">Valider et
-                payer votre commande</button>
+            <button color="#C6FF99" (click)="addPanierToHistorique(this.currentUser.id)"
+                (click)="updatePanierTotal(this.currentUser.id, this.getPrixTotal())"
+                [routerLink]="['/historiqueCommandes']">Valider et
+                payer votre commande </button>
         </div>
     </div>
 </div>

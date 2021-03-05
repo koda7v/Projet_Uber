@@ -31,9 +31,6 @@ public interface HistoriqueRepository extends PagingAndSortingRepository<Histori
   public void addPanierToHistorique(@Param("idPan") Long idPan, @Param("idUser") Long idUser);
 
   @Query("SELECT " + PanierConstantSQL.TABLE_NAME + "." + "*" + " FROM " + PanierConstantSQL.TABLE_NAME + " WHERE "
-      + HistoriqueConstantSQL.TABLE_NAME + "." + PanierConstantSQL.ID_COLUMN_NAME + " = (SELECT "
-      + HistoriqueConstantSQL.TABLE_NAME + "." + PanierConstantSQL.ID_COLUMN_NAME + " FROM "
-      + HistoriqueConstantSQL.TABLE_NAME + " WHERE " + PanierConstantSQL.TABLE_NAME + "."
-      + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser )")
+      + PanierConstantSQL.TABLE_NAME + "." + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser")
   public List<Panier> retrievePaniersFromUsers(@Param("idUser") Long idUser);
 }

@@ -1,1 +1,16 @@
-<p>historique-commande works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-md-12 col-sm-12 col-10">
+            <div class="panier">
+                <div class="border">
+                    <div class="paniers" *ngFor="let panier of paniers" [colspan]="1" [rowspan]="1">
+                        <div class="infos">
+                            <h3>Prix : {{panier.total}} €</h3>
+                            <h3>Date de payement {{panier.date}} </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

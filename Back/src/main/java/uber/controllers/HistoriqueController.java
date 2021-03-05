@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,8 +52,8 @@ public class HistoriqueController
     return this.historiqueService.findAllHistorique();
   }
 
-  @GetMapping("/paniers")
-  public List<Panier> retrievePaniersFromUsers(@Param("idUser") Long idUser)
+  @GetMapping("/paniers/{idUser}")
+  public List<Panier> retrievePaniersFromUsers(@PathVariable("idUser") Long idUser)
   {
     return historiqueService.retrievePaniersFromUsers(idUser);
   }
@@ -72,4 +71,5 @@ public class HistoriqueController
   {
     this.historiqueService.addPanierToHistorique(idUser);
   }
+
 }

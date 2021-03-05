@@ -30,7 +30,6 @@ export class ListePanierPlatsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.findPlatFromPanier(this.currentUser.id);
-    //this.findUserPanier(this.currentUser.id);
   }
 
 
@@ -49,12 +48,23 @@ export class ListePanierPlatsComponent implements OnInit {
     );
   }
 
-  getPrixTotal() {
+  getPrixTotal(): number {
     this.prixPlats = 0;
     this.plats.forEach((element) => {
       this.prixPlats += element.prix;
     });
     return this.prixPlats;
+  }
+
+  updatePanierTotal(idUser: number, total:number) {
+    this.panierService.updatePanierTotal(idUser, total).subscribe(
+      (data: Panier) => {
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
   }
 
   deletePlatFromActivePanier(idUser:number, idPlat:number) {
@@ -81,19 +91,5 @@ export class ListePanierPlatsComponent implements OnInit {
       }
     );
   }
-
-  // findUserPanier(idUser:number) {
-    
-  //   console.dir(this.panierService.findUserPanier(idUser));
-  //   this.panierService.findUserPanier(idUser).subscribe(
-  //     (data: Panier) => {
-  //       this.panier = data;
-  //       console.log("mes datas" + data);
-  //     },
-  //     (error: Observable<never>) => {
-  //       console.log(error);
-  //     },
-  //   );
-  // }
 
 }

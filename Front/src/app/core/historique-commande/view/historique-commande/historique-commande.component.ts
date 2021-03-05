@@ -13,21 +13,44 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HistoriqueCommandeComponent implements OnInit {
 
-  constructor(private historiqueCommandeService: HistoriqueCommandeService,  private route: ActivatedRoute,) { }
-
   historiqueCommande: HistoriqueCommande;
+  paniers : Array<Panier>;
+  currentUser: any;
 
-  ngOnInit(): void {
-    this.retrievePaniersFromHistorique(Number(this.route.snapshot.paramMap.get('id')));
+  constructor(private historiqueCommandeService: HistoriqueCommandeService,  private route: ActivatedRoute, private token: TokenStorageService) { 
+    this.paniers = Array<Panier>()
   }
 
-    /**
-   * Récupération des Plats d'un restaurant
+  
+
+  ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+    this.retrievePaniersFromHistorique(this.currentUser.id)
+  }
+
+      /**
+   * Récupération de l'historique
    */
-  retrievePaniersFromHistorique(idHistoriqueCommande: number): void{
-    this.historiqueCommandeService.get(idHistoriqueCommande).subscribe(
+  retrieveHistorique(id: number): void{
+    this.historiqueCommandeService.get(id).subscribe(
       (data: HistoriqueCommande) => {
         this.historiqueCommande = data;
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
+  }
+
+
+    /**
+   * Récupération les paniers dans l'historique
+   */
+  retrievePaniersFromHistorique(idPanier: number): void{
+    this.historiqueCommandeService.retrievePaniersFromUsers(idPanier).subscribe(
+      (data: Panier[]) => {
+        this.paniers = data;
         console.log(data);
       },
       (error: Observable<never>) => {

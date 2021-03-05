@@ -1,0 +1,29 @@
+::ng-deep .panier {
+    height: auto !important;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+
+    .border {
+
+        background-color: aliceblue;
+
+        .paniers {
+            
+            display: flex;
+            justify-content: space-evenly;
+            margin: 15px;
+            border: 5px solid green;
+
+            .infos {
+                width: 100%;
+                margin: 15px;
+            }
+
+        }
+    }
+}
+
+
+  
+  
