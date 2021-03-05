@@ -30,6 +30,7 @@ export class ListePanierPlatsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.findPlatFromPanier(this.currentUser.id);
+    //this.findUserPanier(this.currentUser.id);
   }
 
 
@@ -69,8 +70,8 @@ export class ListePanierPlatsComponent implements OnInit {
     );
   }
 
-  addPanierToHistorique(IdPanier:number, idUser:number) {
-    this.historiqueService.addPanierToHistorique(IdPanier, idUser).subscribe(
+  addPanierToHistorique(idUser:number) {
+    this.historiqueService.addPanierToHistorique(idUser).subscribe(
       (data: Panier) => {
         this.panier = data;
         console.log(data);
@@ -81,16 +82,18 @@ export class ListePanierPlatsComponent implements OnInit {
     );
   }
 
-  findUserPanier(idUser:number) {
-    this.panierService.findUserPanier(idUser).subscribe(
-      (data: Panier) => {
-        this.panier = data;
-        console.log("mes datas" + data);
-      },
-      (error: Observable<never>) => {
-        console.log(error);
-      },
-    );
-  }
+  // findUserPanier(idUser:number) {
+    
+  //   console.dir(this.panierService.findUserPanier(idUser));
+  //   this.panierService.findUserPanier(idUser).subscribe(
+  //     (data: Panier) => {
+  //       this.panier = data;
+  //       console.log("mes datas" + data);
+  //     },
+  //     (error: Observable<never>) => {
+  //       console.log(error);
+  //     },
+  //   );
+  // }
 
 }

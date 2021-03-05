@@ -30,7 +30,8 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
 
   @Query("SELECT " + PlatConstantSQL.ID_COLUMN_NAME + " FROM " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " WHERE "
       + PanierConstantSQL.ID_COLUMN_NAME + " = (SELECT " + PanierConstantSQL.ID_COLUMN_NAME + " FROM "
-      + PanierConstantSQL.TABLE_NAME + " WHERE " + UserConstantsSQL.ID_COLUMN_NAME + " = :idUser)")
+      + PanierConstantSQL.TABLE_NAME + " WHERE " + UserConstantsSQL.ID_COLUMN_NAME + " = :idUser ORDER BY "
+      + PanierConstantSQL.ID_COLUMN_NAME + " DESC LIMIT 1 )")
   List<PlatRef> findPlatFromPanier(@Param("idUser") Long idUser);
 
   /**

@@ -24,7 +24,8 @@ public interface HistoriqueRepository extends PagingAndSortingRepository<Histori
   @Modifying
   @Query("INSERT INTO " + HistoriqueConstantSQL.TABLE_NAME + " ( " + HistoriqueConstantSQL.TABLE_NAME + "."
       + HistoriqueConstantSQL.FK_ID_PANIER_COLUMN_NAME + ", " + HistoriqueConstantSQL.TABLE_NAME + "."
-      + HistoriqueConstantSQL.FK_ID_USER_COLUMN_NAME + " )  VALUES ( :idPan, :idUser, 1 )")
+      + HistoriqueConstantSQL.FK_ID_USER_COLUMN_NAME + ", " + HistoriqueConstantSQL.TABLE_NAME + "."
+      + HistoriqueConstantSQL.PAYE_COLUMN_NAME + " )  VALUES ( :idPan, :idUser, 1 )")
   void addPanierToHistorique(@Param("idPan") Long idPan, @Param("idUser") Long idUser);
 
 }

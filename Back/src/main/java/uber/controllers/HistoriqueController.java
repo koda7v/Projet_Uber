@@ -60,8 +60,8 @@ public class HistoriqueController
   }
 
   @PostMapping
-  public void addPanierToHistorique(@Valid @RequestParam Long idPan, @Valid @RequestParam Long idUser)
+  public void addPanierToHistorique(@Valid @RequestParam Long idUser)
   {
-    this.historiqueService.addPanierToHistorique(idPan, idUser);
+    this.historiqueService.addPanierToHistorique(idUser);
   }
 }

@@ -33,10 +33,9 @@ export class HistoriqueCommandeService {
   /**
    * Ajout d'un panier à l'historique de commande
    */
-  addPanierToHistorique(IdPanier:number, idUser:number) {
+  addPanierToHistorique(idUser:number) {
     let parametres = new HttpParams();
     parametres = parametres.append('idUser', idUser.toString())      
-    parametres = parametres.append('idPlat', IdPanier.toString())
 
     return this.http.post<Panier>(`${baseUrl}`, parametres);
   }
