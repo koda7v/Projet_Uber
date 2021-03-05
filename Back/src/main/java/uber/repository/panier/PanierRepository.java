@@ -67,8 +67,8 @@ public interface PanierRepository extends PagingAndSortingRepository<Panier, Lon
 
   @Modifying
   @Transactional
-  @Query("DELETE FROM " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "WHERE "
+  @Query("DELETE FROM " + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + " WHERE "
       + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PanierConstantSQL.FK_ID_PAN_COLUMN_NAME + " = :idPan AND "
-      + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat")
+      + PanierConstantSQL.PLAT_PANIER_ASSOCIATION + "." + PlatConstantSQL.ID_COLUMN_NAME + " = :idPlat LIMIT 1")
   void deletePlatFromActivePanier(@Param("idPan") Long idPan, @Param("idPlat") Long idPlat);
 }

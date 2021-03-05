@@ -55,10 +55,24 @@ export class PanierService {
     let parametres = new HttpParams();
     parametres = parametres.append('idUser', idUser.toString())      
     parametres = parametres.append('idPlat', idPlat.toString())
+
+    return this.http.post<Panier>(`${baseUrl}`, parametres);
+  }
+
+    /**
+   * 
+   * @param idUser id du user
+   * @param idPlat id du plat
+   */
+  deletePlatFromActivePanier(idUser:number, idPlat:number) {
+
+    let parametres = new HttpParams();
+    parametres = parametres.append('idUser', idUser.toString())      
+    parametres = parametres.append('idPlat', idPlat.toString())
     const option = {
       params: parametres
     };
 
-    return this.http.post<Panier>(`${baseUrl}`, parametres);
+    return this.http.delete<Plat>(`${baseUrl}/delete`, option);
   }
 }

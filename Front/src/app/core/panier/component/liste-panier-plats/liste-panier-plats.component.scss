@@ -1,6 +1,6 @@
 ::ng-deep .panier_plat {
     height: auto !important;
-    width: 50%;
+    width: 100%;
     margin: auto;
     text-align: center;
 
@@ -9,11 +9,28 @@
         background-color: aliceblue;
 
         .plats {
+            
+            display: flex;
+            justify-content: space-evenly;
             margin: 15px;
             border: 5px solid green;
+
+            .infos {
+                width: 100%;
+                margin: 15px;
+            }
+
+            .supprimer {
+                margin: 30px;
+            }
         }
     }
-  }
+}
+
+.prix {
+    width: 100%;
+    margin: auto;
+}
 
 
   

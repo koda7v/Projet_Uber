@@ -17,6 +17,7 @@ export class ListePanierPlatsComponent implements OnInit {
 
 
   plats: Array<Plat>;
+  plat: Plat;
   currentUser: any;
   prixPlats: number;
 
@@ -52,6 +53,19 @@ export class ListePanierPlatsComponent implements OnInit {
     });
     console.log(this.prixPlats);
     return this.prixPlats;
+  }
+
+  deletePlatFromActivePanier(idUser:number, idPlat:number) {
+    this.panierService.deletePlatFromActivePanier(idUser, idPlat).subscribe(
+      (data: Plat) => {
+        this.plat = data;
+        this.findPlatFromPanier(this.currentUser.id);
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
   }
 
 }

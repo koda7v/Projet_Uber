@@ -1,12 +1,26 @@
-<div class="panier_plat">
-    <div class="border">
-        <div class="plats" *ngFor="let plat of plats" [colspan]="1" [rowspan]="1">
-            <h3>{{plat.nom}}</h3>
-            <h3>Prix : {{plat.prix}} €</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-md-12 col-sm-12 col-10">
+            <div class="panier_plat">
+                <div class="border">
+                    <div class="plats" *ngFor="let plat of plats" [colspan]="1" [rowspan]="1">
+                        <div class="infos">
+                            <h3>{{plat.nom}}</h3>
+                            <h3>Prix : {{plat.prix}} €</h3>
+                        </div>
+                        <div class="supprimer">
+                            <button color="#C6FF99"
+                                (click)="deletePlatFromActivePanier(this.currentUser.id, this.plat.id)">Supprimer ce
+                                plat de la commande</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="prix">
+        <div class="prix col-lg-2 col-md-3 col-8">
             <h3> Le prix de votre commande est de : {{ getPrixTotal() }} €</h3>
+            <button color="#C6FF99">Valider et
+                payer votre commande</button>
         </div>
-
     </div>
 </div>
