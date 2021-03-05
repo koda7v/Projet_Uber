@@ -32,19 +32,19 @@ export class NavigationComponent {
 
   gestionNavigation(): void{
     const user = this.tokenStorageService.getUser();
-    if (user === null || user.roles.includes('ROLE_USER')){
+    if (user === null){
       this.items = [
-        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'},
-        { title: 'Mon Panier', route: '/paniers', icon: 'add_shopping_cart'},
-        { title: 'historique des commandes', route: '/historiqueCommandes', icon: 'restaurant_menu'}
+        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'}
       ];
     }else if (user.roles.includes('ROLE_ADMIN')){
       this.items = [
         { title: 'Gestion des Restaurants', route: '/gestionRestaurant', icon: 'dining' }
       ];
-    }else if(user != null || user.roles.includes('ROLE_USER')){
+    }else if (user.roles.includes('ROLE_USER')){
       this.items = [
-
+        { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'},
+        { title: 'Mon Panier', route: '/paniers', icon: 'add_shopping_cart'},
+        { title: 'historique des commandes', route: '/historiqueCommandes', icon: 'restaurant_menu'}
       ];
     }
   }

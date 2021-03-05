@@ -12,6 +12,8 @@ import { Restaurant } from 'src/app/core/restaurant/interfaces/restaurant.vo';
 import { Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { SearchRestaurantFieldComponent } from '../../components/search-restaurant-field/search-restaurant-field.component';
 
 
@@ -43,6 +45,7 @@ export class GestionRestaurantsComponent implements OnInit {
     private restaurantService: RestaurantService,
     private router: Router,
     private sanitizer: DomSanitizer,
+    private snackBar: MatSnackBar,
   ) {
     this.dataSource = new MatTableDataSource([]);
     this.listShow = new Array<boolean>();

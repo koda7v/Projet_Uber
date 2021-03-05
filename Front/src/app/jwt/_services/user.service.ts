@@ -1,29 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 const API_URL = 'http://localhost:8081/api/test/';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+  getPublicContent(): void {
+    this.router.navigate(['/restaurants']);
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+  getUserBoard(): void {
+    this.router.navigate(['/restaurants']);
   }
 
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
+  getModeratorBoard(): void {
+    this.router.navigate(['/gestionRestaurant']);
   }
 
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+  getAdminBoard(): void {
+    this.router.navigate(['/gestionRestaurant']);
   }
 }
