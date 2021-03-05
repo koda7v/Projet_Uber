@@ -35,6 +35,7 @@ public class PhotoService
 
   public void updatePhoto(Photo photo, Long id)
   {
+    System.out.println(photo.getName());
     this.photoRepository.updatePhoto(id, photo.getPhoto(), photo.getName(), photo.getCommentaire());
   }
 
