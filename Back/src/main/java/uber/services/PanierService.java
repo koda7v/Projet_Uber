@@ -68,4 +68,10 @@ public class PanierService
 
   }
 
+  public void addNewPanierForUser(@Valid Long idUser)
+  {
+    this.panierRepository.addNewPanierForUser(idUser);
+
+  }
+
 }
