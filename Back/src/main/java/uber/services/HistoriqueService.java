@@ -52,4 +52,9 @@ public class HistoriqueService
     panierService.addNewPanierForUser(idUser);
 
   }
+
+  public List<Panier> retrievePaniersFromUsers(Long idUser)
+  {
+    return historiqueRepository.retrievePaniersFromUsers(idUser);
+  }
 }

@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import uber.model.HistoriqueCommande;
+import uber.model.Panier;
+import uber.repository.panier.PanierConstantSQL;
 import uber.repository.plat.PlatConstantSQL;
 
 @Repository
@@ -26,6 +28,12 @@ public interface HistoriqueRepository extends PagingAndSortingRepository<Histori
       + HistoriqueConstantSQL.FK_ID_PANIER_COLUMN_NAME + ", " + HistoriqueConstantSQL.TABLE_NAME + "."
       + HistoriqueConstantSQL.FK_ID_USER_COLUMN_NAME + ", " + HistoriqueConstantSQL.TABLE_NAME + "."
       + HistoriqueConstantSQL.PAYE_COLUMN_NAME + " )  VALUES ( :idPan, :idUser, 1 )")
-  void addPanierToHistorique(@Param("idPan") Long idPan, @Param("idUser") Long idUser);
+  public void addPanierToHistorique(@Param("idPan") Long idPan, @Param("idUser") Long idUser);
 
+  @Query("SELECT " + PanierConstantSQL.TABLE_NAME + "." + "*" + " FROM " + PanierConstantSQL.TABLE_NAME + " WHERE "
+      + HistoriqueConstantSQL.TABLE_NAME + "." + PanierConstantSQL.ID_COLUMN_NAME + " = (SELECT "
+      + HistoriqueConstantSQL.TABLE_NAME + "." + PanierConstantSQL.ID_COLUMN_NAME + " FROM "
+      + HistoriqueConstantSQL.TABLE_NAME + " WHERE " + PanierConstantSQL.TABLE_NAME + "."
+      + PanierConstantSQL.FK_ID_USER_COLUMN_NAME + " = :idUser )")
+  public List<Panier> retrievePaniersFromUsers(@Param("idUser") Long idUser);
 }
