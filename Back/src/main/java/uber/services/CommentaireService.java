@@ -37,4 +37,9 @@ public class CommentaireService
     this.commentaireRepository.deleteById(id);
 
   }
+
+  public void addCommentaire(String texte, Long idUser, Long idResto)
+  {
+    this.commentaireRepository.addCommentaire(texte, idUser, idResto);
+  }
 }
