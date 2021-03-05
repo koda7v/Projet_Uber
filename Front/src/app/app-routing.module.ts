@@ -31,6 +31,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/plat/plat.module').then((m) => m.PlatModule)
   },
+  {
+    path: 'historiqueCommandes',
+    loadChildren: () =>
+      import('./core/historique-commande/historique-commande.module').then((m) => m.HistoriqueCommandeModule)
+  },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

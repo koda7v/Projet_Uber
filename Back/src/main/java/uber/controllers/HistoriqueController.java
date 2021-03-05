@@ -40,7 +40,7 @@ public class HistoriqueController
   }
 
   /**
-   * retourne une liste des historiques
+   * Retourne une liste des historiques
    * 
    * @return
    */
@@ -48,7 +48,6 @@ public class HistoriqueController
   @ResponseStatus(HttpStatus.OK)
   public List<HistoriqueCommande> getAllHistorique()
   {
-    System.out.println("ouuu");
     return this.historiqueService.findAllHistorique();
   }
 

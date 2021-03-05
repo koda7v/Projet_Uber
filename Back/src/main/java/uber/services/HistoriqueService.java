@@ -31,7 +31,6 @@ public class HistoriqueService
 
   public List<HistoriqueCommande> findAllHistorique()
   {
-    System.out.println("ouuuui");
     return historiqueRepository.findAll();
   }
 

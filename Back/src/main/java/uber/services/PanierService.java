@@ -57,8 +57,6 @@ public class PanierService
   {
     Panier p = panierRepository.findUserPanier(idUser);
     Long idPan = p.getId();
-    System.out.println("idPan : " + idPan);
-    System.out.println("idPlat : " + idPlat);
     panierRepository.addPlatToUserPanier(idPan, idPlat);
   }
 

@@ -35,11 +35,16 @@ export class NavigationComponent {
     if (user === null || user.roles.includes('ROLE_USER')){
       this.items = [
         { title: 'Voir les restaurants', route: '/restaurants', icon: 'restaurant'},
-        { title: 'Historique de commande', route: '/paniers', icon: 'add_shopping_cart'}
+        { title: 'Mon Panier', route: '/paniers', icon: 'add_shopping_cart'},
+        { title: 'historique des commandes', route: '/historiqueCommandes', icon: 'restaurant_menu'}
       ];
     }else if (user.roles.includes('ROLE_ADMIN')){
       this.items = [
         { title: 'Gestion des Restaurants', route: '/gestionRestaurant', icon: 'dining' }
+      ];
+    }else if(user != null || user.roles.includes('ROLE_USER')){
+      this.items = [
+
       ];
     }
   }

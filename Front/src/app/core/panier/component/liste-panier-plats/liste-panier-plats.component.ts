@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PanierService } from 'src/app/core/panier/services/panier.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Panier } from '../../interfaces/panier.vo';
 import { TokenStorageService } from '../../../../jwt/_services/token-storage.service';
 import { Plat } from 'src/app/core/plat/interfaces/plat.vo';
-import { element } from 'protractor';
+import { HistoriqueCommandeService } from 'src/app/core/historique-commande/services/historique-commande.service';
+import { Panier } from 'src/app/core/panier/interfaces/panier.vo';
 
 
 @Component({
@@ -18,12 +18,14 @@ export class ListePanierPlatsComponent implements OnInit {
 
   plats: Array<Plat>;
   plat: Plat;
+  panier: Panier;
   currentUser: any;
   prixPlats: number;
+  panierId: number;
 
   constructor(private panierService: PanierService,
     private route: ActivatedRoute,
-    private token: TokenStorageService) { this.plats = Array<Plat>() }
+    private historiqueService: HistoriqueCommandeService, private token: TokenStorageService) { this.plats = Array<Plat>() }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -51,7 +53,6 @@ export class ListePanierPlatsComponent implements OnInit {
     this.plats.forEach((element) => {
       this.prixPlats += element.prix;
     });
-    console.log(this.prixPlats);
     return this.prixPlats;
   }
 
@@ -65,6 +66,30 @@ export class ListePanierPlatsComponent implements OnInit {
       (error: Observable<never>) => {
         console.log(error);
       }
+    );
+  }
+
+  addPanierToHistorique(IdPanier:number, idUser:number) {
+    this.historiqueService.addPanierToHistorique(IdPanier, idUser).subscribe(
+      (data: Panier) => {
+        this.panier = data;
+        console.log(data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      }
+    );
+  }
+
+  findUserPanier(idUser:number) {
+    this.panierService.findUserPanier(idUser).subscribe(
+      (data: Panier) => {
+        this.panier = data;
+        console.log("mes datas" + data);
+      },
+      (error: Observable<never>) => {
+        console.log(error);
+      },
     );
   }
 
